@@ -7,5 +7,8 @@ class ShippingCompany < ApplicationRecord
 
     validates :corporate_name, :brand_name, :cnpj, :email_domain, uniqueness: true
     validates :email_domain, :cnpj, :corporate_name, :brand_name, :full_adress, presence: true
+    validates :price_dimensions, :price_km, :price_weight, :deadline_km, comparison: { greater_than_or_equal_to: 0}
+    validates :price_dimensions, :price_km, :price_weight, numericality: {only_decimal: true}
+    validates :deadline_km, numericality: {only_integer: true}
     validates :cnpj, length: { is: 14 }
 end

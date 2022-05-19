@@ -10,18 +10,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_17_024153) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_181407) do
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "weight"
+    t.integer "height"
+    t.integer "width"
+    t.integer "distance"
+    t.string "delivery_adress"
+    t.boolean "accepted"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shipping_company_id", null: false
+    t.string "track_id"
+    t.index ["shipping_company_id"], name: "index_orders_on_shipping_company_id"
+  end
+
+  create_table "shipping_companies", force: :cascade do |t|
+    t.string "email_domain"
+    t.string "cnpj"
+    t.string "corporate_name"
+    t.string "brand_name"
+    t.string "full_adress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.decimal "price_km", default: "0.0"
+    t.decimal "price_weight", default: "0.0"
+    t.decimal "price_dimensions", default: "0.0"
+    t.integer "deadline_km", default: 0
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shipping_company_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["shipping_company_id"], name: "index_users_on_shipping_company_id"
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "license_plate"
+    t.string "fabrication_year"
+    t.string "car_model"
+    t.integer "max_weight"
+    t.string "car_brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shipping_company_id", null: false
+    t.index ["shipping_company_id"], name: "index_vehicles_on_shipping_company_id"
+  end
+
+  add_foreign_key "orders", "shipping_companies"
+  add_foreign_key "users", "shipping_companies"
+  add_foreign_key "vehicles", "shipping_companies"
 end
