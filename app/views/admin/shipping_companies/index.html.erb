@@ -1,0 +1,19 @@
+<h1>Transportadoras</h1>
+    <%= link_to 'Cadastrar Transportadora', new_admin_shipping_company_path %>
+
+    <% if @shipping_companies.any? %>
+        <% @shipping_companies.each do |s| %>  
+            <div>
+                <h3><%=link_to s.brand_name, edit_admin_shipping_company_path(s.id) %></h3>
+                <dl>
+                    <dt>Razão Social: </dt>
+                    <dd><%= s.corporate_name %></dd>
+                    <dt>Status: </dt>
+                    <dd><%= s.status %></dd>
+                </dl>
+            </div>
+        <% end %>
+    
+    <% else %>
+        <p>Não há Transportadoras cadastradas</p>
+    <% end %>

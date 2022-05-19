@@ -1,0 +1,30 @@
+<%= form_with model: [:admin, @shipping_company] do |s| %>
+    <div> 
+        <%= s.label :corporate_name %>
+        <%= s.text_field :corporate_name %>
+    </div>
+
+    <div> 
+        <%= s.label :brand_name %>
+        <%= s.text_field :brand_name %>
+    </div>
+
+    <div> 
+        <%= s.label :cnpj %>
+        <%= s.text_field :cnpj %>
+    </div>
+
+    <div> 
+        <%= s.label :email_domain %>
+        <%= s.text_field :email_domain %>
+    </div>
+
+    <div> 
+        <%= s.label :full_adress %>
+        <%= s.text_field :full_adress %>
+    </div>
+
+    <div>
+        <%= s.submit 'Cadastrar' %>
+    </div>
+<% end %>
