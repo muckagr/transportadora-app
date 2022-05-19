@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   devise_for :admins
   root to: 'home#index'
 
-  get '/products/:id', to: 'home#display_product', as: 'show_product'
-
   namespace :admin do
     resources :shipping_companies
     resources :orders

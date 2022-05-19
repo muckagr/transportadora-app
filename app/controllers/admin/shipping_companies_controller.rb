@@ -24,16 +24,21 @@ class Admin::ShippingCompaniesController < ApplicationController
     def edit; end
 
     def update
-        if @shipping_company.update(params.require(:shipping_company).permit(:status))
-            return redirect_to admin_shipping_company(@shipping_company), notice: 'Status alterado com SUCESSO!'
+        if (shipping_company_params[:status] == "active" || shipping_company_params[:status] == "accepted") && (@shipping_company.price_dimensions <= 0 || @shipping_company.price_km <= 0 || @shipping_company.price_weight <= 0 || @shipping_company.deadline_km <= 0)
+            @shipping_company.waiting!
+            flash.now[:notice] = 'Transportadora não pode estar ativa ou aceita caso não tenha preços e prazos cadastrados!'
+            return render 'edit'
+        elsif @shipping_company.update(shipping_company_params)
+            return redirect_to admin_shipping_company_path(@shipping_company), notice: 'Transportadora atualizada com SUCESSO!'
         end
-        flash.now[:notice] = 'Falha ao alterar Status'
+
+        flash.now[:notice] = 'Falha ao alterar informações'
         render 'edit'
     end
 
     private
     def shipping_company_params
-        params.require(:shipping_company).permit(:email_domain, :cnpj, :corporate_name, :brand_name, :full_adress)
+        params.require(:shipping_company).permit(:email_domain, :cnpj, :corporate_name, :brand_name, :full_adress, :status)
     end
 
     def set_shipping_company

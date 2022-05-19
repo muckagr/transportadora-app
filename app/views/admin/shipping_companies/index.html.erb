@@ -4,11 +4,11 @@
     <% if @shipping_companies.any? %>
         <% @shipping_companies.each do |s| %>  
             <div>
-                <h3><%=link_to s.brand_name, edit_admin_shipping_company_path(s.id) %></h3>
+                <h2><%=link_to s.brand_name, admin_shipping_company_path(s.id) %></h2>
                 <dl>
-                    <dt>Razão Social: </dt>
+                    <dt><strong>Razão Social: </strong></dt>
                     <dd><%= s.corporate_name %></dd>
-                    <dt>Status: </dt>
+                    <dt><strong>Status: </strong></dt>
                     <dd><%= s.status %></dd>
                 </dl>
             </div>

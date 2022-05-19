@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'Admin visita a tela de cadastro de transportadoras' do 
+describe 'Admin visits shipping companies register screen' do 
 
-    it 'com sucesso' do
+    it 'sucessfully' do
         admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
@@ -13,7 +13,7 @@ describe 'Admin visita a tela de cadastro de transportadoras' do
         expect(current_path).to eq new_admin_shipping_company_path
     end
 
-    it 'e vê todos os campos para cadastro de transportadoras' do
+    it 'and see all the fields for registering shipping companies' do
         admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
@@ -29,7 +29,7 @@ describe 'Admin visita a tela de cadastro de transportadoras' do
         expect(page).to have_button('Cadastrar')
     end
 
-    it 'e cadastra uma transportadora com sucesso' do
+    it 'and sucessfully register a shipping company' do
         admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
@@ -48,5 +48,52 @@ describe 'Admin visita a tela de cadastro de transportadoras' do
         expect(page).to have_content('SEDEX')
         expect(page).to have_content('Razão Social: SEDEX LTDA')
         expect(page).to have_content('Status:')
+    end
+
+    it 'and unsuccessfully registers a shipping company with unique data that already exists' do
+        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+        corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
+
+        login_as(admin, :scope => :admin)
+        visit(root_path)
+        click_on('Transportadoras')
+        click_on('Cadastrar Transportadora')
+        fill_in('Razão Social', with: '99 LTDA')
+        fill_in('Nome Fantasia', with: '99 CENTAVOS')
+        fill_in('CNPJ', with: '00000000000000')
+        fill_in('Domínio de E-mail', with: 'loja99.com')
+        fill_in('Endereço', with: 'São Paulo/São paulo, Rua das Parnaíbas, 128')
+        click_on('Cadastrar')
+
+        expect(page).to have_content('Falha ao cadastrar!')
+        expect(page).to have_content('Razão Social já está em uso')
+        expect(page).to have_content('Nome Fantasia já está em uso')
+        expect(page).to have_content('CNPJ já está em uso')
+        expect(page).to have_content('Domínio de E-mail já está em uso')
+    end
+
+    it 'and unsuccessfully registers a shipping company with incomplete data' do
+        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+        corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
+
+        login_as(admin, :scope => :admin)
+        visit(root_path)
+        click_on('Transportadoras')
+        click_on('Cadastrar Transportadora')
+        fill_in('Razão Social', with: '')
+        fill_in('Nome Fantasia', with: '')
+        fill_in('CNPJ', with: '')
+        fill_in('Domínio de E-mail', with: '')
+        fill_in('Endereço', with: '')
+        click_on('Cadastrar')
+
+        expect(page).to have_content('Falha ao cadastrar!')
+        expect(page).to have_content('Domínio de E-mail não pode ficar em branco')
+        expect(page).to have_content('CNPJ não pode ficar em branco')
+        expect(page).to have_content('Razão Social não pode ficar em branc')
+        expect(page).to have_content('Nome Fantasia não pode ficar em branco')
+        expect(page).to have_content('Endereço não pode ficar em branco')
     end
 end

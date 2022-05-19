@@ -3,7 +3,9 @@ class ShippingCompany < ApplicationRecord
     has_many :users
     has_many :orders
 
-    enum status: {inativa: 0, ativa: 1, desativada: 2}
+    enum status: {waiting: 0, accepted: 1, active: 2, inactive: 3}
 
-    # validates :email_domain, :cnpj, :corporate_name, :brand_name, :full_adress
+    validates :corporate_name, :brand_name, :cnpj, :email_domain, uniqueness: true
+    validates :email_domain, :cnpj, :corporate_name, :brand_name, :full_adress, presence: true
+    validates :cnpj, length: { is: 14 }
 end

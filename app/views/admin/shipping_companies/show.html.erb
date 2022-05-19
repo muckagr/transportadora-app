@@ -1,22 +1,34 @@
 <dl>
-    <dd>Nome Fantasia</dd>
-    <dt><%= @shipping_company.brand_name %></dt>
+    <dt><strong>Nome Fantasia:</strong></dt>
+    <dd><%= @shipping_company.brand_name %></dd>
 
-    <dd>Domínio de E-mail</dd>
-    <dt><%= @shipping_company.email_domain %></dt>
+    <dt><strong>CNPJ:</strong></dt>
+    <dd><%= @shipping_company.cnpj %></dd>
 
-    <dd>Razão Social</dd>
-    <dt><%= @shipping_company.corporate_name %></dt>
+    <dt><strong>Domínio de E-mail:</strong></dt>
+    <dd><%= @shipping_company.email_domain %></dd>
 
-    <dd>Endereço</dd>
-    <dt><%= @shipping_company.full_adress %></dt>
+    <dt><strong>Razão Social:</strong></dt>
+    <dd><%= @shipping_company.corporate_name %></dd>
 
-    <dd>Preço por km</dd>
-    <dt><%= @shipping_company.price_km %></dt>
+    <dt><strong>Endereço:</strong></dt>
+    <dd><%= @shipping_company.full_adress %></dd>
 
-    <dd>Preço por peso</dd>
-    <dt><%= @shipping_company.price_weight %></dt>
+    <dt><strong>Preço por km:</strong></dt>
+    <dd><%= @shipping_company.price_km %></dd>
 
-    <dd>Preço por dimensão</dd>
-    <dt><%= @shipping_company.price_dimensions %></dt>
+    <dt><strong>Preço por peso:</strong></dt>
+    <dd><%= @shipping_company.price_weight %></dd>
+
+    <dt><strong>Preço por dimensão:</strong></dt>
+    <dd><%= @shipping_company.price_dimensions %></dd>
+
+    <dt><strong>Prazo de entrega/100km:</strong></dt>
+    <dd><%= @shipping_company.deadline_km %></dd>
+
+    <dt><strong>Status:</strong></dt>
+    <dd><%= @shipping_company.status %></dd>
 </dl>
+
+<%= link_to 'Editar', edit_admin_shipping_company_path(@shipping_company) %>
+<%= link_to 'Voltar', admin_shipping_companies_path %>

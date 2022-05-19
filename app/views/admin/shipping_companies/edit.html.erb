@@ -33,6 +33,11 @@
     </div>
 
     <div>
-        <%= s.submit 'Cadastrar' %>
+        <%= s.label :status %>
+        <%= s.select :status, ['waiting', 'accepted', 'active', 'inactive'] %>
+    </div>
+
+    <div>
+        <%= s.submit 'Editar' %>
     </div>
 <% end %>

@@ -6,4 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(email: 'arthurafk@gmail.com', password: 'password', admin: true)
+Admin.create!(email: 'arthurafk@gmail.com', password: 'password')
+
+ShippingCompany.create!(email_domain: 'sedex.com.br', cnpj: '13130158000128', corporate_name: 'SEDEX LTDA',
+brand_name: 'SEDEX', full_adress: 'São Paulo - São Paulo, Rua das Parnaíbas, 101') 
+
+User.create!(email: 'arthur@sedex.com.br', password: 'password')

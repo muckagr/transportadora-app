@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      admin: "Administrador"
+    attributes:
+      admin:
+        corporate_name: "Razão Social"
+        brand_name: "Nome Fantasia"
+        cnpj: "CNPJ"
+        full_adress: "Endereço"
+        city: "Cidade"
+        state: "Estado"
+        email_domain: "Domínio de E-mail"
