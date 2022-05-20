@@ -1,0 +1,38 @@
+<% if @vehicle.errors.any? %>
+    <ul>
+        <% @vehicle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: [:user, current_user.shipping_company, @vehicle] do |v| %>
+    <div> 
+        <%= v.label :car_model %>
+        <%= v.text_field :car_model %>
+    </div>
+
+    <div> 
+        <%= v.label :car_brand %>
+        <%= v.text_field :car_brand %>
+    </div>
+
+    <div> 
+        <%= v.label :license_plate %>
+        <%= v.text_field :license_plate %>
+    </div>
+
+    <div> 
+        <%= v.label :fabrication_year %>
+        <%= v.text_field :fabrication_year %>
+    </div>
+
+    <div> 
+        <%= v.label :max_weight %>
+        <%= v.text_field :max_weight %>
+    </div>
+
+    <div>
+        <%= v.submit 'Cadastrar' %>
+    </div>
+<% end %>

@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle:
+        one: "Veículo"
+        other: "Veículos"
+    attributes:
+      vehicle:
+        license_plate: "Placa do Veículo"
+        fabrication_year: "Ano de Fabricação"
+        car_model: "Modelo do Veículo"
+        car_brand: "Marca do Veículo"
+        max_weight: "Peso máximo"

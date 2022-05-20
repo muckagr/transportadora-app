@@ -1,0 +1,18 @@
+<h1>Veículos</h1>
+<%= link_to 'Cadastrar Veículos', new_user_shipping_company_vehicle_path(current_user.shipping_company) %>
+<% @vehicles.each do |v| %>  
+    <div>
+        <dl>
+            <dt><h2>Modelo: </h2></dt>
+            <dd><%= v.car_model %></dd>
+            <dt>Marca: </dt>
+            <dd><%= v.car_brand %></dd>
+            <dt>Placa: </dt>
+            <dd><%= v.license_plate %></dd>
+        </dl>
+    </div>
+<% end %>
+
+<% if @vehicles.empty? %>
+    <p>Não há veículos cadastrados</p>
+<% end %>

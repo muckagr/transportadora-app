@@ -10,4 +10,11 @@ Rails.application.routes.draw do
     resources :shipping_companies
     resources :orders
   end
+
+  namespace :user do
+    resources :shipping_companies, only: %i[show update edit] do
+      resources :orders, only: %i[show update edit index]
+      resources :vehicles, only: %i[index new create]
+    end
+  end
 end

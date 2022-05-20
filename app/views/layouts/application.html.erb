@@ -17,12 +17,16 @@
           <li><%= link_to 'Login como Admin', new_admin_session_path%></li>
         <% end %>
         <% if current_admin %>
-          <li><%= current_admin.email %> <%= button_to 'sair', destroy_admin_session_path, method: :delete %></li>
+          <li><%= button_to 'sair', destroy_admin_session_path, method: :delete %></li>
+          <li><%= current_admin.email %></li>
           <li><%= link_to 'Transportadoras', admin_shipping_companies_path %></li>
         <% end %>
         <% if current_user %>
-          <li><%= current_user.email %> <%= button_to 'sair', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Minha transportadora', user_shipping_companies_path %></li>
+          <li><%= button_to 'sair', destroy_user_session_path, method: :delete %></li>
+          <li><%= current_user.email %></li>
+          <li><%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company) %></li>
+          <li><%= link_to 'Ordens de Serviço', user_shipping_company_orders_path(current_user.shipping_company) %></li>
+          <li><%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company) %></li>
         <% end %>
       </ul>
     </nav>

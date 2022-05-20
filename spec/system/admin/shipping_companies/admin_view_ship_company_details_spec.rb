@@ -16,8 +16,8 @@ describe 'Admin visit details page of a shipping company' do
         expect(page).to have_content('Razão Social: 99 LTDA')
         expect(page).to have_content('Endereço: Rua dos Padres, 101')
         expect(page).to have_content('Preço por km:')
-        expect(page).to have_content('Preço por peso:')
-        expect(page).to have_content('Preço por dimensão:')
+        expect(page).to have_content('Preço por grama:')
+        expect(page).to have_content('Preço por cm3:')
         expect(page).to have_content('Prazo de entrega/100km:')
         expect(page).to have_content('Status')
     end

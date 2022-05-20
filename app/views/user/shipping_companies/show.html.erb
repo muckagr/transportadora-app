@@ -17,10 +17,10 @@
     <dt><strong>Preço por km:</strong></dt>
     <dd><%= @shipping_company.price_km %></dd>
 
-    <dt><strong>Preço por grama:</strong></dt>
+    <dt><strong>Preço por peso:</strong></dt>
     <dd><%= @shipping_company.price_weight %></dd>
 
-    <dt><strong>Preço por cm3:</strong></dt>
+    <dt><strong>Preço por dimensão:</strong></dt>
     <dd><%= @shipping_company.price_dimensions %></dd>
 
     <dt><strong>Prazo de entrega/100km:</strong></dt>
@@ -30,5 +30,5 @@
     <dd><%= @shipping_company.status %></dd>
 </dl>
 
-<%= link_to 'Editar', edit_admin_shipping_company_path(@shipping_company) %>
-<%= link_to 'Voltar', admin_shipping_companies_path %>
+<%= link_to 'Editar', edit_user_shipping_company_path(@shipping_company) %>
+<%= link_to 'Voltar', root_path %>

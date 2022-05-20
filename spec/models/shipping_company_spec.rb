@@ -9,4 +9,5 @@ describe ShippingCompany do
     it { should validate_numericality_of(:price_km).is_greater_than_or_equal_to(0)}
     it { should validate_numericality_of(:price_weight).is_greater_than_or_equal_to(0)}
     it { should validate_numericality_of(:price_dimensions).is_greater_than_or_equal_to(0)}
+    it { should validate_numericality_of(:deadline_km).is_greater_than_or_equal_to(0)}
 end

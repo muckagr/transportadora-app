@@ -1,0 +1,33 @@
+<% if @shipping_company.errors.any? %>
+    <ul>
+        <% @shipping_company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: [:user, @shipping_company] do |s| %>
+    <div> 
+        <%= s.label :price_dimensions %>
+        <%= s.text_field :price_dimensions %>
+    </div>
+
+    <div> 
+        <%= s.label :price_km %>
+        <%= s.text_field :price_km %>
+    </div>
+
+    <div> 
+        <%= s.label :price_weight %>
+        <%= s.text_field :price_weight %>
+    </div>
+
+    <div> 
+        <%= s.label :deadline_km %>
+        <%= s.text_field :deadline_km %>
+    </div>
+
+    <div>
+        <%= s.submit 'Editar' %>
+    </div>
+<% end %>
