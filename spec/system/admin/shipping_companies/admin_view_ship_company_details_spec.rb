@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin visit details page of a shipping company' do
     it 'and see additional informations' do
-        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create(email: 'admin@sistemadefrete.com.br', password: 'password')
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
 
@@ -23,7 +23,7 @@ describe 'Admin visit details page of a shipping company' do
     end
 
     it 'and goes back to shipping companies page' do
-        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create(email: 'admin@sistemadefrete.com.br', password: 'password')
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
 

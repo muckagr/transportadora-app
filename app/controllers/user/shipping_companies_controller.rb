@@ -15,7 +15,6 @@ class User::ShippingCompaniesController < ApplicationController
         if @shipping_company.update(shipping_company_params)
             if @shipping_company.price_dimensions > 0 && @shipping_company.price_km > 0 && @shipping_company.price_weight > 0 && @shipping_company.deadline_km > 0
                 @shipping_company.accepted!
-        
             else
                 @shipping_company.waiting!
             end

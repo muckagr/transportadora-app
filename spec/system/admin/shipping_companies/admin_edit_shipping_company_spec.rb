@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin visits shipping company edit page' do
     it 'and see all admins editable shipping company fields' do
-        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create(email: 'admin@sistemadefrete.com.br', password: 'password')
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
 
@@ -21,7 +21,7 @@ describe 'Admin visits shipping company edit page' do
     end
 
     it 'and sucessfully edits a shipping company' do
-        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create(email: 'admin@sistemadefrete.com.br', password: 'password')
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
 
@@ -44,7 +44,7 @@ describe 'Admin visits shipping company edit page' do
     end
 
     it 'and keeps all mandatory fields' do
-        admin = Admin.create(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create(email: 'admin@sistemadefrete.com.br', password: 'password')
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
 

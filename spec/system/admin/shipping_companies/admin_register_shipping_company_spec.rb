@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Admin visits shipping companies register screen' do 
 
     it 'sucessfully' do
-        admin = Admin.create!(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
         visit(root_path)
@@ -14,7 +14,7 @@ describe 'Admin visits shipping companies register screen' do
     end
 
     it 'and see all the fields for registering shipping companies' do
-        admin = Admin.create!(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
         visit(root_path)
@@ -30,7 +30,7 @@ describe 'Admin visits shipping companies register screen' do
     end
 
     it 'and sucessfully register a shipping company' do
-        admin = Admin.create!(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: 'password')
 
         login_as(admin, :scope => :admin)
         visit(root_path)
@@ -51,7 +51,7 @@ describe 'Admin visits shipping companies register screen' do
     end
 
     it 'and unsuccessfully registers a shipping company with non-valid data' do
-        admin = Admin.create!(email: 'admin@admin.com.br', password: 'password')
+        admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: 'password')
         
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
