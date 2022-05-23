@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :shipping_companies
-    resources :orders
+    resources :products, only: %i[new create index show] do
+      resources :orders, only: %i[new create]
+    end
   end
 
   namespace :user do

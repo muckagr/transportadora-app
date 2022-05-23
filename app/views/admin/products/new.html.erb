@@ -1,0 +1,48 @@
+<% if @product.errors.any? %>
+    <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: [:admin, @product] do |p| %>
+    <div> 
+        <%= p.label :customer_name %>
+        <%= p.text_field :customer_name %>
+    </div>
+
+    <div> 
+        <%= p.label :customer_address%>
+        <%= p.text_field :customer_address%>
+    </div>
+
+    <div> 
+        <%= p.label :distance, "Distância (Km)" %>
+        <%= p.text_field :distance %>
+    </div>
+
+    <div> 
+        <%= p.label :height, "Altura do Produto (cm)" %>
+        <%= p.text_field :height %>
+    </div>
+
+    <div> 
+        <%= p.label :width, "Largura do Produto (cm)" %>
+        <%= p.text_field :width %>
+    </div>
+
+    <div> 
+        <%= p.label :depth, "Profundidade do Produto (cm)" %>
+        <%= p.text_field :depth %>
+    </div>
+
+    <div> 
+        <%= p.label :weight, "Peso do Produto (g)" %>
+        <%= p.text_field :weight %>
+    </div>
+
+    <div>
+        <%= p.submit 'Cadastrar' %>
+    </div>
+<% end %>

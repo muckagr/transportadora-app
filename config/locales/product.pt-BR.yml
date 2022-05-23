@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      product: "Produto"
+    attributes:
+      product:
+        customer_address: "Endereço do Cliente"
+        customer_name: "Nome do Cliente"
+        distance: "Distância"
+        height: "Altura"

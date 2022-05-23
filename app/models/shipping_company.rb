@@ -2,6 +2,7 @@ class ShippingCompany < ApplicationRecord
     has_many :vehicles
     has_many :users
     has_many :orders
+    has_many :shipping_prices
 
     enum status: {waiting: 0, accepted: 1, active: 2, inactive: 3}
 

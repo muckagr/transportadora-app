@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      product: "Produto"
+    attributes:
+      product/status:
+        waiting_for_order: "Esperando Ordem de Serviço"
+        waiting_for_shipping_company: "Esperando aprovação da Ordem de Serviço"
+        sent: "Enviado"
+        deliverd: "Entregue"

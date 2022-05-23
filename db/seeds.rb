@@ -13,4 +13,8 @@ brand_name: 'SEDEX', full_adress: 'São Paulo - São Paulo, Rua das Parnaíbas, 
 
 user = User.create!(email: 'arthur@sedex.com.br', password: 'password')
 
-vehicle = Vehicle.create!(license_plate: 'MXK0237', fabrication_year: '2000', car_model: 'UNO', car_brand: 'FIAT', max_weight: 100, shipping_company: shipping_company)
+vehicle = Vehicle.create!(license_plate: 'MXK0237', fabrication_year: '2000', car_model: 'UNO', 
+car_brand: 'FIAT', max_weight: 100, shipping_company: shipping_company)
+
+product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+distance: 100, weight: 2000, height: 10, width: 20, depth: 5)

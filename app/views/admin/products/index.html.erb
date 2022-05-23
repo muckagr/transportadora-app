@@ -1,0 +1,20 @@
+<h1>Produtos</h1>
+    <%= link_to 'Cadastrar Produto', new_admin_product_path %>
+
+    <% if @products.any? %>
+        <% @products.each do |p| %>  
+            <div>
+                <h2><%=link_to "Pedido: ##{p.id} - Código: #{p.code}", admin_product_path(p.id) %></h2>
+                <dl>
+                    <dt><strong>Nome do Cliente:</strong></dt>
+                    <dd><%= p.customer_name %></dd>
+                    
+                    <dt><strong>Endereço de Entrega:</strong></dt>
+                    <dd><%= p.customer_address %></dd>
+                </dl>
+            </div>
+        <% end %>
+    
+    <% else %>
+        <p>Não há produtos em espera</p>
+    <% end %>
