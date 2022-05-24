@@ -1,10 +1,10 @@
 <h1>Ordens de Serviço</h1>
-
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <% @service_orders.each do |so| %>
     <div>
         <dl>
             <dt>Ordem:</dt>
-            <dd>#<%= so.id %></dd>
+            <dd><%= so.code %></dd>
 
             <dt>Transportadora:</dt>
             <dd><%= so.shipping_company.brand_name %></dd>
@@ -14,6 +14,10 @@
 
             <dt>Valor:</dt>
             <dd>R$<%= so.shipping_price %></dd>
+
+            <dt>Prazo:</dt>
+            <dd><%= %>
         </dl>
     </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <% end %>

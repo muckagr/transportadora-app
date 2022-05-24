@@ -16,12 +16,12 @@ class Admin::OrdersController < ApplicationController
         @product = Product.find(params[:product_id])
         @order = Order.new()
         @order.shipping_company = @shipping_company
+        @order.delivery_time = Order.deadline_calculator(@product, @shipping_company)
         @order.shipping_price = Order.price_calculator(@product, @shipping_company)
         if @order.save
             @product.order_id = @order.id
             @product.waiting_for_shipping_company!
             return redirect_to admin_orders_path, notice: 'Ordem de Serviço gerada com SUCESSO!'
-            debugger
         end
         flash.now[:notice] = 'Falha ao cadastrar!'
         render 'new'

@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe Order do
     it { should validate_presence_of(:shipping_price) }
+    it { should validate_presence_of(:delivery_time) }
     it { should belong_to(:shipping_company) }
 
     it 'and must have a code when create a new order' do 
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
                 corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
                 status: :accepted)
-        order = Order.create!(shipping_price: 99, shipping_company: shipping_company)
+        order = Order.create!(shipping_price: 99, shipping_company: shipping_company, delivery_time: 1)
 
         order.save
         result = order.code

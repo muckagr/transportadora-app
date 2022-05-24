@@ -4,7 +4,7 @@ class Order < ApplicationRecord
     has_many :vehicles
     enum status: {pendente_de_aceite: 0, aceita: 1, recusada: 2}, _default: :pendente_de_aceite
 
-    validates :shipping_price, presence: true
+    validates :shipping_price, :delivery_time, presence: true
     
     private
     def self.price_calculator(product, shipping_company)
@@ -19,15 +19,15 @@ class Order < ApplicationRecord
     end
     
     def self.deadline_calculator(product, shipping_company)
+        delivery_time = shipping_company.deadline_km * product.distance/30
+        if delivery_time.zero?
+            return 1
+        end
         return shipping_company.deadline_km * product.distance/30
     end
   
     def code_generate
-        if self.code.nil?
-        gen_code = SecureRandom.alphanumeric(15).upcase
-        if !Product.exists?(code: gen_code)
-            self.code = gen_code
-        end
-        end
+        self.code = SecureRandom.alphanumeric(15)
+        code_generate if Order.exists?(code: self.code)
     end
 end

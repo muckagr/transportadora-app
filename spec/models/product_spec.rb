@@ -8,8 +8,6 @@ describe Product do
     it { should validate_presence_of(:width) }
     it { should validate_presence_of(:height) }
     it { should validate_presence_of(:depth) }
-    it { should validate_uniqueness_of(:code) }
-    it { should validate_length_of(:code).is_equal_to(15) }
     it { should validate_numericality_of(:distance).is_greater_than(0)}
     it { should validate_numericality_of(:weight).is_greater_than(0)}
     it { should validate_numericality_of(:width).is_greater_than(0)}
