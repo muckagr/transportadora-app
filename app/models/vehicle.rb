@@ -1,5 +1,6 @@
 class Vehicle < ApplicationRecord
     belongs_to :shipping_company
+    belongs_to :order, optional: true
     
     validates :license_plate, :fabrication_year, presence: true 
     validates :car_model, :max_weight, :car_brand, presence: true

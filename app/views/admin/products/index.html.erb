@@ -12,6 +12,7 @@
                     <dt><strong>Endereço de Entrega:</strong></dt>
                     <dd><%= p.customer_address %></dd>
                 </dl>
+                <%= link_to 'Gerar Ordem de Serviço', new_admin_product_order_path(p) %>
             </div>
         <% end %>
     

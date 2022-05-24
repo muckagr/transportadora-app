@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  after_initialize :code_generate
+  before_validation :code_generate
   belongs_to :shipping_company, optional: true
   enum status: {waiting_for_order: 0, waiting_for_shipping_company: 1, sent: 2, delivered: 3}, _default: :waiting_for_order
 
@@ -12,7 +12,11 @@ class Product < ApplicationRecord
 
   private
   def code_generate
-    self.code = SecureRandom.alphanumeric(15).upcase
-    code_generate if Product.exists?(code: self.code)
+    if self.code.nil?
+      gen_code = SecureRandom.alphanumeric(15).upcase
+      if !Product.exists?(code: gen_code)
+        self.code = gen_code
+      end
+    end
   end
 end

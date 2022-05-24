@@ -1,0 +1,19 @@
+<h1>Ordens de Serviço</h1>
+
+<% @service_orders.each do |so| %>
+    <div>
+        <dl>
+            <dt>Ordem:</dt>
+            <dd>#<%= so.id %></dd>
+
+            <dt>Transportadora:</dt>
+            <dd><%= so.shipping_company.brand_name %></dd>
+
+            <dt>Endereço de Entrega:</dt>
+            <dd><%= Product.find(so.id).customer_address %></dd>
+
+            <dt>Valor:</dt>
+            <dd>R$<%= so.shipping_price %></dd>
+        </dl>
+    </div>
+<% end %>

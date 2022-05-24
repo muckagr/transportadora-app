@@ -4,7 +4,6 @@ describe 'user visits shipping companies vehicles register screen' do
     it 'sucessfully' do
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
-        
         user = User.create(email: 'admin@loja99.com', password: 'password')
 
         login_as(user, :scope => :user)
@@ -18,7 +17,6 @@ describe 'user visits shipping companies vehicles register screen' do
     it 'and see all the required attributes to register a vehicle' do
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
-        
         user = User.create(email: 'admin@loja99.com', password: 'password')
 
         login_as(user, :scope => :user)
@@ -36,7 +34,6 @@ describe 'user visits shipping companies vehicles register screen' do
     it 'and register a vehicle sucessfully' do
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
-        
         user = User.create(email: 'admin@loja99.com', password: 'password')
 
         login_as(user, :scope => :user)

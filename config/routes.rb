@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   namespace :admin do
+    resources :orders, only: %i[index]
     resources :shipping_companies
     resources :products, only: %i[new create index show] do
       resources :orders, only: %i[new create]

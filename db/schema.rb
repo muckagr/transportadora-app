@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_031822) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_23_202646) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,18 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_031822) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "weight"
-    t.integer "height"
-    t.integer "width"
-    t.integer "distance"
-    t.string "delivery_adress"
-    t.boolean "accepted"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shipping_company_id", null: false
-    t.string "track_id"
+    t.integer "shipping_company_id"
+    t.integer "status"
+    t.string "code"
+    t.integer "vehicle_id"
+    t.decimal "shipping_price"
     t.index ["shipping_company_id"], name: "index_orders_on_shipping_company_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,18 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_031822) do
     t.decimal "price_weight", default: "0.0"
     t.decimal "price_dimensions", default: "0.0"
     t.integer "deadline_km", default: 0
-  end
-
-  create_table "shipping_prices", force: :cascade do |t|
-    t.decimal "min_m3"
-    t.decimal "max_m3"
-    t.decimal "min_weight"
-    t.decimal "max_weight"
-    t.decimal "price_km"
-    t.integer "shipping_company_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shipping_company_id"], name: "index_shipping_prices_on_shipping_company_id"
+    t.decimal "minimal_price", default: "0.0"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,9 +96,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_031822) do
   end
 
   add_foreign_key "orders", "shipping_companies"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "products", "orders"
   add_foreign_key "products", "shipping_companies"
-  add_foreign_key "shipping_prices", "shipping_companies"
   add_foreign_key "users", "shipping_companies"
   add_foreign_key "vehicles", "shipping_companies"
 end

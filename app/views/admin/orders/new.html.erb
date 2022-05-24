@@ -1,0 +1,35 @@
+<% if @order.errors.any? %>
+    <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h1>Gerar Ordem de Serviço<h2>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<h2>Produto:<%= @product.code %></h2>
+<p><strong> Peso: </strong><%= @product.weight %>g</p>
+<p><strong> Altura: </strong><%= @product.height %>cm</p>
+<p><strong> Largura: </strong><%= @product.width %>cm</p>
+<p><strong> Profundidade: </strong><%= @product.depth %>cm</p>
+<p><strong> Endereço de Entrega: </strong><%= @product.customer_address %></p>
+<p><strong> Distância: </strong><%= @product.distance %>km</p>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<h2>Preços</h2>
+
+<% if !(@available_shipping_companyes).nil? %>
+    <%= form_with model: [:admin, @product, @order] do |o| %>
+        <% @available_shipping_companyes.each do |asp| %>
+            <div>
+                <%= o.radio_button :shipping_company, asp.id, id: "#{asp.id}", :checked => true %>
+                <%= label_tag(:shipping_company, "Transportadora: #{asp.brand_name} | Preço: R$#{Order.price_calculator(@product, asp)} | Prazo de Entrega: #{Order.deadline_calculator(@product, asp)} dias úteis") %>
+            </div>
+        <% end %>
+        <div>
+            <%= o.submit 'Gerar Ordem de Serviço' %>
+        </div>
+    <% end %>
+<% else %>
+    <p>Não há Transportadoras disponíveis.</p>
+<% end %>

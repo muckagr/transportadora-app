@@ -21,6 +21,7 @@
           <li><%= current_admin.email %></li>
           <li><%= link_to 'Transportadoras', admin_shipping_companies_path %></li>
           <li><%= link_to 'Produtos', admin_products_path %></li>
+          <li><%= link_to 'Ordens de Serviço', admin_orders_path %></li>
         <% end %>
         <% if current_user %>
           <li><%= button_to 'sair', destroy_user_session_path, method: :delete %></li>

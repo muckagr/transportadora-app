@@ -1,32 +1,32 @@
 <dl>
-    <dt><strong>Nome Fantasia:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:brand_name) %>:</strong></dt>
     <dd><%= @shipping_company.brand_name %></dd>
 
-    <dt><strong>CNPJ:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:cnpj) %>:</strong></dt>
     <dd><%= @shipping_company.cnpj %></dd>
 
-    <dt><strong>Domínio de E-mail:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:email_domain) %>:</strong></dt>
     <dd><%= @shipping_company.email_domain %></dd>
 
-    <dt><strong>Razão Social:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:corporate_name) %>:</strong></dt>
     <dd><%= @shipping_company.corporate_name %></dd>
 
-    <dt><strong>Endereço:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:full_adress) %>:</strong></dt>
     <dd><%= @shipping_company.full_adress %></dd>
 
-    <dt><strong>Preço por km:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:price_km) %>:</strong></dt>
     <dd><%= @shipping_company.price_km %></dd>
 
-    <dt><strong>Preço por peso:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:price_weight) %>:</strong></dt>
     <dd><%= @shipping_company.price_weight %></dd>
 
-    <dt><strong>Preço por dimensão:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:price_dimensions) %>:</strong></dt>
     <dd><%= @shipping_company.price_dimensions %></dd>
 
-    <dt><strong>Prazo de entrega/100km:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:deadline_km) %>:</strong></dt>
     <dd><%= @shipping_company.deadline_km %></dd>
 
-    <dt><strong>Status:</strong></dt>
+    <dt><strong><%= ShippingCompany.human_attribute_name(:status) %>:</strong></dt>
     <dd><%= @shipping_company.status %></dd>
 </dl>
 

@@ -7,7 +7,6 @@ describe Product do
     it { should validate_presence_of(:weight) }
     it { should validate_presence_of(:width) }
     it { should validate_presence_of(:height) }
-    it { should validate_presence_of(:code) }
     it { should validate_presence_of(:depth) }
     it { should validate_uniqueness_of(:code) }
     it { should validate_length_of(:code).is_equal_to(15) }
@@ -57,5 +56,5 @@ describe Product do
      
         product_2.save 
         expect(product_1.code).to_not eq(product_2.code) 
-      end
+    end
 end
