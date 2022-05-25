@@ -15,5 +15,6 @@ pt-BR:
         price_km: "Preço por km"
         price_weight: "Preço por grama"
         deadline_km: "Dias úteis de prazo/30km"
+        minimal_price: "Preço mínimo"
         status: "Status"
         accepted: "Aguardando Ativação por Admin"

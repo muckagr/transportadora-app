@@ -23,7 +23,7 @@
         <% @available_shipping_companyes.each do |asp| %>
             <div>
                 <%= o.radio_button :shipping_company, asp.id, id: "#{asp.id}", :checked => true %>
-                <%= label_tag(:shipping_company, "Transportadora: #{asp.brand_name} | Preço: R$#{Order.price_calculator(@product, asp)} | Prazo de Entrega: #{Order.deadline_calculator(@product, asp)} dias úteis") %>
+                <%= label_tag(:shipping_company, "Transportadora: #{asp.brand_name} | Preço: #{number_to_currency(Order.price_calculator(@product, asp), precision: 2)} | Prazo de Entrega: #{Order.deadline_calculator(@product, asp)} dias úteis") %>
             </div>
         <% end %>
         <div>

@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-    before_validation :code_generate
+    before_create :code_generate
     belongs_to :shipping_company
     has_many :vehicles
     enum status: {pendente_de_aceite: 0, aceita: 1, recusada: 2}, _default: :pendente_de_aceite
@@ -8,7 +8,7 @@ class Order < ApplicationRecord
     
     private
     def self.price_calculator(product, shipping_company)
-        dimension_basead_price = (product.width * product.height * product.depth)/100 * shipping_company.price_dimensions
+        dimension_basead_price = (product.width * product.height * product.depth)/1000000 * shipping_company.price_dimensions
         distance_based_price = product.distance * shipping_company.price_km
         weight_based_price = product.weight * shipping_company.price_weight
         shipping_price = dimension_basead_price + distance_based_price + weight_based_price

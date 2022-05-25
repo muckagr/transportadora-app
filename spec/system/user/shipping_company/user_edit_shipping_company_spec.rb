@@ -15,6 +15,7 @@ describe 'User visits shipping company edit page' do
         expect(page).to have_field('Preço por km', with: '0.0')
         expect(page).to have_field('Preço por grama', with: '0.0')
         expect(page).to have_field('Dias úteis de prazo/30km', with: '0')
+        expect(page).to have_field('Preço mínimo', with: '0.0')
     end
 
     it 'and sucessfully edits a shipping company' do
@@ -30,6 +31,7 @@ describe 'User visits shipping company edit page' do
         fill_in('Preço por km', with: '0.15')
         fill_in('Preço por grama', with: '0.005')
         fill_in('Dias úteis de prazo/30km', with: '1')
+        fill_in('Preço mínimo', with: 30)
         click_on('Editar')
 
         expect(page).to have_content('Transportadora atualizada com SUCESSO!')
@@ -52,6 +54,7 @@ describe 'User visits shipping company edit page' do
         fill_in('Preço por km', with: 'a')
         fill_in('Preço por grama', with: '')
         fill_in('Dias úteis de prazo/30km', with: '1.2')
+        fill_in('Preço mínimo', with: ' ')
         click_on('Editar')
 
         expect(page).to have_content('Falha ao atualizar Transportadora')

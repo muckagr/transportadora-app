@@ -1,23 +1,28 @@
 <h1>Ordens de Serviço</h1>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<% @service_orders.each do |so| %>
-    <div>
-        <dl>
-            <dt>Ordem:</dt>
-            <dd><%= so.code %></dd>
 
-            <dt>Transportadora:</dt>
-            <dd><%= so.shipping_company.brand_name %></dd>
+<% if @service_orders.empty? %>
+    <p>Não existem Ordens de Serviço<p>
+<% else %>
+    <% @service_orders.each do |so| %>
+        <div>
+            <dl>
+                <dt><strong>Código da Ordem de Serviço:</strong></dt>
+                <dd><%= so.code %></dd>
 
-            <dt>Endereço de Entrega:</dt>
-            <dd><%= Product.find(so.id).customer_address %></dd>
+                <dt><strong>Transportadora:</strong></dt>
+                <dd><%= so.shipping_company.brand_name %></dd>
 
-            <dt>Valor:</dt>
-            <dd>R$<%= so.shipping_price %></dd>
+                <dt><strong>Endereço de Entrega:</strong></dt>
+                <dd><%= Product.find(so.id).customer_address %></dd>
 
-            <dt>Prazo:</dt>
-            <dd><%= %>
-        </dl>
-    </div>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                <dt><strong>Valor:</strong></dt>
+                <dd><%= number_to_currency(so.shipping_price, precision: 2) %></dd>
+
+                <dt><strong>Prazo:</strong></dt>
+                <dd><%= so.delivery_time %> dias úteis</dd>
+            </dl>
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <% end %>
 <% end %>

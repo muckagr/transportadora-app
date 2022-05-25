@@ -25,6 +25,6 @@ describe 'Admin visits order of service page' do
         visit(root_path)
         click_on('Ordens de Serviço')
 
-        expect(page).to have_content('Não há Ordens de Serviço')
+        expect(page).to have_content('Não existem Ordens de Serviço')
     end
 end

@@ -13,7 +13,7 @@ class User::ShippingCompaniesController < ApplicationController
 
     def update
         if @shipping_company.update(shipping_company_params)
-            if @shipping_company.price_dimensions > 0 && @shipping_company.price_km > 0 && @shipping_company.price_weight > 0 && @shipping_company.deadline_km > 0
+            if @shipping_company.price_dimensions > 0 && @shipping_company.price_km > 0 && @shipping_company.price_weight > 0 && @shipping_company.deadline_km > 0 && @shipping_company.minimal_price > 0
                 @shipping_company.accepted!
             else
                 @shipping_company.waiting!
@@ -27,7 +27,7 @@ class User::ShippingCompaniesController < ApplicationController
 
     private
     def shipping_company_params
-        params.require(:shipping_company).permit(:price_dimensions, :price_km, :price_weight, :deadline_km)
+        params.require(:shipping_company).permit(:price_dimensions, :price_km, :price_weight, :deadline_km, :minimal_price)
     end
 
     def set_shipping_company
