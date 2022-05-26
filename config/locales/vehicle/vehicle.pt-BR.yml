@@ -11,3 +11,4 @@ pt-BR:
         car_model: "Modelo do Veículo"
         car_brand: "Marca do Veículo"
         max_weight: "Peso máximo"
+        vehicle_id: "Veículo"

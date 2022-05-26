@@ -43,7 +43,3 @@ distance: 340, weight: 2000, height: 10, width: 10, depth: 10)
 
 product_3 = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
 distance: 30, weight: 10000, height: 15, width: 20, depth: 15)
-
-order_1 = Order.create!(shipping_company: shipping_company_1, 
-shipping_price: Order.price_calculator(product_1, shipping_company_1),
-delivery_time: Order.deadline_calculator(product_1, shipping_company_1))

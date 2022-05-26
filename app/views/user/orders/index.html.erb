@@ -21,6 +21,17 @@
                 <dd><%= so.delivery_time %> dias úteis</dd>
             </dl>
         </div>
-        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <%= form_with model: [:user, @shipping_company, so], method: :patch do |o| %>
+             <div id="<%= so.code %>">
+                <div>
+                    <%= o.label :vehicle_id %>
+                    <%= o.collection_select :vehicle_id, @vehicles, :id, :car_model %>
+                </div>
+                <%= o.submit 'Aceitar Ordem de Serviço' %>
+                <%= o.submit 'Recusar Ordem de Serviço' %>
+            </div>
+        <% end %>
     <% end %>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <% end %>
