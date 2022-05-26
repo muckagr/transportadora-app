@@ -42,28 +42,44 @@ describe Order do
         order_2.save 
         expect(order_1.code).to_not eq(order_2.code) 
     end
-
-    it 'and generates a correct shipping_price' do
-        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
-                corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
-                price_km: 0.3, price_dimensions: 0.5, price_weight: 0.009, deadline_km: 2, minimal_price: 30)
-        product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
-                distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
-
-        shipping_price = Order.price_calculator(product, shipping_company)
-
-        expect(sprintf('%.2f', shipping_price).to_f).to eq 48
+    
+    context '.deadline_calculator' do
+        it 'generates a correct delivery time' do
+            shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+            corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
+            price_km: 0.3, price_dimensions: 0.5, price_weight: 0.009, deadline_km: 2, minimal_price: 30)
+            product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+            distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
+            
+            shipping_price = Order.deadline_calculator(product, shipping_company)
+            
+            expect(shipping_price).to eq 6
+        end
     end
+    
+    context '.price_calculator' do
+        it 'generates a correct shipping_price' do
+            shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+            corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
+            price_km: 0.3, price_dimensions: 0.5, price_weight: 0.009, deadline_km: 2, minimal_price: 30)
+            product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+            distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
+            
+            shipping_price = Order.price_calculator(product, shipping_company)
+            
+            expect(shipping_price).to eq 47.99
+        end
 
-    it 'and generates a correct delivery time' do
-        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
-                corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
-                price_km: 0.3, price_dimensions: 0.5, price_weight: 0.009, deadline_km: 2, minimal_price: 30)
-        product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
-                distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
-
-        shipping_price = Order.deadline_calculator(product, shipping_company)
-
-        expect(shipping_price).to eq 6
+        it 'return minimal price if shipping_price is below minimal price set by shipping company' do
+            shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+                    corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101',
+                    price_km: 0.3, price_dimensions: 0.5, price_weight: 0.009, deadline_km: 2, minimal_price: 30)
+            product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+                    distance: 30, weight: 200, height: 10, width: 20, depth: 5)
+    
+            shipping_price = Order.price_calculator(product, shipping_company)
+    
+            expect(shipping_price).to eq 30
+        end
     end
 end

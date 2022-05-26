@@ -25,7 +25,7 @@ class Admin::ShippingCompaniesController < ApplicationController
     def edit; end
 
     def update
-        if (shipping_company_params[:status] == "active" || shipping_company_params[:status] == "accepted") && (@shipping_company.price_dimensions <= 0 || @shipping_company.price_km <= 0 || @shipping_company.price_weight <= 0 || @shipping_company.deadline_km <= 0)
+        if (shipping_company_params[:status] == "active" || shipping_company_params[:status] == "accepted") && (@shipping_company.price_dimensions <= 0 || @shipping_company.price_km <= 0 || @shipping_company.price_weight <= 0 || @shipping_company.deadline_km <= 0 || @shipping_company.vehicles.empty?)
             @shipping_company.waiting!
             flash.now[:notice] = 'Transportadora não pode estar ativa ou aceita caso não tenha preços e prazos cadastrados!'
             return render 'edit'

@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+    
     before_create :code_generate
     belongs_to :shipping_company
     has_many :vehicles
@@ -13,7 +14,10 @@ class Order < ApplicationRecord
         weight_based_price = product.weight * shipping_company.price_weight
         shipping_price = dimension_basead_price + distance_based_price + weight_based_price
         if shipping_price < shipping_company.minimal_price
-            return shipping_company.minimal_price
+            return number_formater(shipping_company.minimal_price)
+        end
+        if shipping_price.to_s.length >= 5
+            shipping_price = shipping_price.to_s.slice(0..4).to_f
         end
         return shipping_price
     end
@@ -30,4 +34,14 @@ class Order < ApplicationRecord
         self.code = SecureRandom.alphanumeric(15)
         code_generate if Order.exists?(code: self.code)
     end
+
+    def self.number_formater(number)
+        before_dot_number= number.to_s.split('.')[0]
+        after_dot_number = number.to_s.split('.')[1]
+        if after_dot_number.length == 1
+            return (number.to_s + '0').to_f
+        end
+        return number.to_s.slice(0..4).to_f
+    end
+
 end

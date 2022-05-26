@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+    before_action :authenticate_admin!
 
     def index
         @service_orders = Order.pendente_de_aceite
