@@ -12,7 +12,6 @@ class Admin::OrdersController < ApplicationController
     end
 
     def create
-        order_params = params.require(:order).permit(:shipping_company, :product_id)
         @shipping_company = ShippingCompany.find(order_params[:shipping_company])
         @product = Product.find(params[:product_id])
         @order = Order.new()
@@ -26,5 +25,9 @@ class Admin::OrdersController < ApplicationController
         end
         flash.now[:notice] = 'Falha ao cadastrar!'
         render 'new'
+    end
+
+    def order_params
+        params.require(:order).permit(:shipping_company, :product_id)
     end
 end

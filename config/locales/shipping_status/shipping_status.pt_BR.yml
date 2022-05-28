@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      shipping_status: "Status de Entrega"
+    attributes:
+      shipping_status:
+        order_id: "Código da Ordem de Serviço"
+        location: "Local da Atualização"
+        status_description: "Descrição"

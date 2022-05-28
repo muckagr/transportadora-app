@@ -1,0 +1,28 @@
+<% if @shipping_status.errors.any? %>
+    <ul>
+        <% @shipping_status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h1>Atualizar Status de Entrega</h1>
+
+<%= form_with model: [:user, current_user.shipping_company, @shipping_status] do |s| %>
+    <div>
+        <%= s.label :order_id%>
+        <%= s.text_field :order_id %>
+    </div>
+
+    <div>
+        <%= s.label :location %>
+        <%= s.text_field :location %>
+    </div>
+
+    <div>
+        <%= s.label :status_description %>
+        <%= s.text_field :status_description %>
+    </div>
+
+    <%= s.submit 'Atualizar' %>
+<% end %>

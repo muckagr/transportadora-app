@@ -3,6 +3,7 @@ class Order < ApplicationRecord
     before_create :code_generate
     belongs_to :shipping_company
     has_many :vehicles
+    has_many :shipping_statuses
     enum status: {pendente_de_aceite: 0, aceita: 1, recusada: 2}, _default: :pendente_de_aceite
 
     validates :shipping_price, :delivery_time, presence: true
@@ -40,6 +41,8 @@ class Order < ApplicationRecord
         after_dot_number = number.to_s.split('.')[1]
         if after_dot_number.length == 1
             return (number.to_s + '0').to_f
+        elsif after_dot_number == 2
+            return number
         end
         return number.to_s.slice(0..4).to_f
     end

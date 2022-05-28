@@ -29,6 +29,7 @@
           <li><%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company) %></li>
           <li><%= link_to 'Ordens de Serviço', user_shipping_company_orders_path(current_user.shipping_company) %></li>
           <li><%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company) %></li>
+          <li><%= link_to 'Atualizar Entrega', new_user_shipping_company_shipping_status_path(current_user.shipping_company) %>
         <% end %>
       </ul>
     </nav>
