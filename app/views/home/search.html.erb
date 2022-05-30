@@ -1,0 +1,15 @@
+<h1>Status do Rastreio</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<% @shipping_statuses.each do |ss| %>
+    <div>
+        <dd><strong>Local da Atualização</strong></dd>
+        <dt><%= ss.location %><dt>
+
+        <dd><strong>Descrição da Atualização</strong></dd>
+        <dt><%= ss.status_description %></dt>
+
+        <dd><strong>Data da Atualização</strong></dd>
+        <dt><%= ss.update_date %></dt>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    </div>
+<% end %>

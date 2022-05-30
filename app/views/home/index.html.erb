@@ -1,7 +1,9 @@
 <h1>Rastreio de Produtos</h1>
 
-<%= form_with url: '/show_product', method: :get do |form| %>
-  <%= form.label :product_code, "Código de Rastreio:" %>
-  <%= form.text_field :product_code %>
+<%= form_with url: '/home/search', method: :get do |form| %>
+  <%= form.label :order_code, "Código de Rastreio" %>
+  <%= form.text_field :order_code %>
   <%= form.submit "Procurar" %>
 <% end %>
+
+

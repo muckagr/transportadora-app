@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   devise_for :admins
   root to: 'home#index'
 
+  resources :home, only: %i[search] do
+    get 'search', on: :collection
+  end
+
   namespace :admin do
     resources :orders, only: %i[index]
     resources :shipping_companies
