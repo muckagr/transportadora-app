@@ -22,10 +22,10 @@ describe 'Admin visits product page' do
         visit(root_path)
         click_on('Produtos')
 
-        expect(page).to have_content("Pedido: ##{product_1.id}")
+        expect(page).to have_content("Pedido: #{product_1.id} - Código: #{product_1.code}")
         expect(page).to have_content('Nome do Cliente: Arthur')
         expect(page).to have_content('Endereço de Entrega: Rua dos Anjos, 101')
-        expect(page).to have_content("Pedido: ##{product_2.id}")
+        expect(page).to have_content("Pedido: #{product_2.id} - Código: #{product_2.code}")
         expect(page).to have_content('Nome do Cliente: Wesley')
         expect(page).to have_content('Endereço de Entrega: Rua dos Demonios, 666')
     end

@@ -4,7 +4,7 @@
     <% if @products.any? %>
         <% @products.each do |p| %>  
             <div>
-                <h2><%=link_to "Pedido: ##{p.id} - Código: #{p.code}", admin_product_path(p.id) %></h2>
+                <h2>Pedido: <%= p.id %> - Código: <%= p.code %></h2>
                 <dl>
                     <dt><strong>Nome do Cliente:</strong></dt>
                     <dd><%= p.customer_name %></dd>
