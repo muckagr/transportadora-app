@@ -51,15 +51,15 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
 
 1.  Conta de Administrador (Admin)
 
-    - email: arthurafk@sistemadefrete.com.br, password: password
+    - email: arthurafk@sistemadefrete.com.br, senha: password
 
 2.  Conta de Funcionário (User)
 
-    - email: arthur@sedex.com.br, password: password
+    - email: arthur@sedex.com.br, senha: password
 
-    - email: arthur@phoenix.com.br, password: password
+    - email: arthur@phoenix.com.br, senha: password
 
-    - email: arthur@papaleguas.com.br, password: password
+    - email: arthur@papaleguas.com.br, senha: password
 
 3.  Transportadoras
 
@@ -68,4 +68,5 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
     - Papaléguas Transportadora
 
 4.  Outros
-    -03 veículos e 03 produtos
+
+    - 03 veículos e 03 produtos
