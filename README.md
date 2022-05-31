@@ -1,7 +1,9 @@
 # TransportadoraApp
 
-TranportadoraApp tem a finalidade de oferecer funcionalidades para transportadoras e seus clientes, sendo capaz de calcular preços, prazos e confirmar disponibilidade de frete.
-O usuário Admin, além de outras responsabilidades, também tem a função de cadastrar Transportadoras que estejam interessadas em participar dessa associação. Assim que a Transportadora é cadastrada a mesma se torna apta a receber Ordens de Serviço ao preencher suas configurações de preços e prazos. As Ordens de Serviço são criadas também pelo Admin, e são compostas sempre por um produto, um prazo de entrega e o valor do frete. Cabe às Transportadoras decidirem aceitar ou não uma Ordem de Serviço. Quando uma ordem de serviço é aceita, o cliente então pode começar o rastreio do seu produto.
+A TransportadoraApp tem a finalidade de oferecer funcionalidades para transportadoras e seus clientes, sendo capaz de calcular preços, prazos, confirmar disponibilidade de frete e rastrear pedidos.
+O usuário Administrador (Admin), tem a função de cadastrar Transportadoras que estejam interessadas em participar dessa associação, além de outras responsabilidades. Assim que a Transportadora é cadastrada, é possível realizar o cadastro de funcionários, bastando apenas a criar a conta informando o domínio de e-mail de sua respectiva Transportadora.
+Os funcionários tem permissão de alterar configurações de preços e prazos de suas empresas, assim, tornando-as aptas a receber Ordens de Serviço.
+Ordens de Serviço são criadas também pelo Admin e são compostas sempre por um produto, um prazo de entrega e o valor do frete. Cabe às Transportadoras decidirem aceitar ou não uma Ordem de Serviço. Quando uma ordem de serviço é aceita, o cliente então pode começar o rastreio do seu produto pelo código da ordem de serviço.
 
 ## Requisitos
 
