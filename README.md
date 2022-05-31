@@ -46,3 +46,26 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
 #### 6. Acessar pelo seu navegador
 
             http://localhost:3000/
+
+## Dados Pré-Existentes
+
+1.  Conta de Administrador (Admin)
+
+    - email: arthurafk@sistemadefrete.com.br, password: password
+
+2.  Conta de Funcionário (User)
+
+    - email: arthur@sedex.com.br, password: password
+
+    - email: arthur@phoenix.com.br, password: password
+
+    - email: arthur@papaleguas.com.br, password: password
+
+3.  Transportadoras
+
+    - SEDEX
+    - PHOENIX Transportadora
+    - Papaléguas Transportadora
+
+4.  Outros
+    -03 veículos e 03 produtos
