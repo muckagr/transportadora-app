@@ -1,24 +1,46 @@
-# README
+# TransportadoraApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TranportadoraApp tem a finalidade de oferecer funcionalidades para transportadoras e seus clientes, sendo capaz de calcular preços, prazos e confirmar disponibilidade de frete.
+O usuário Admin, além de outras responsabilidades, também tem a função de cadastrar Transportadoras que estejam interessadas em participar dessa associação. Assim que a Transportadora é cadastrada a mesma se torna apta a receber Ordens de Serviço ao preencher suas configurações de preços e prazos. As Ordens de Serviço são criadas também pelo Admin, e são compostas sempre por um produto, um prazo de entrega e o valor do frete. Cabe às Transportadoras decidirem aceitar ou não uma Ordem de Serviço. Quando uma ordem de serviço é aceita, o cliente então pode começar o rastreio do seu produto.
 
-Things you may want to cover:
+## Requisitos
 
-* Ruby version
+- ruby "3.0.3"
 
-* System dependencies
+## Dependências
 
-* Configuration
+### Testes
 
-* Database creation
+- gem 'rspec-rails (5.1.2)'
+- gem "capybara (3.36.0)"
+- gem 'shoulda-matchers', '~> 5.0'
 
-* Database initialization
+### Autorização/Autenticação
 
-* How to run the test suite
+- gem 'devise'
 
-* Services (job queues, cache servers, search engines, etc.)
+## Como executar essa aplicação?
 
-* Deployment instructions
+#### 1. Clonar o projeto a partir de seu terminal
 
-* ...
+        git clone https://github.com/muckagr/transportadora-app.git
+
+#### 2. Entrar no diretório da Aplicação
+
+            cd transportadora-app
+
+#### 3. Instalar todas as dependências necessárias
+
+            bin/setup
+
+#### 4. Popular o banco de dados
+
+           rails db:seed
+
+#### 5. Iniciar a aplicação
+
+            rails s
+
+#### 6. Acessar pelo seu navegador
+
+            http://localhost:3000/
