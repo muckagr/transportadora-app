@@ -1,9 +1,9 @@
 class Admin::BudgetGeneratesController < ApplicationController
-    before_action :set_budget, only: [:show]
     before_action :authenticate_admin!
     
     def show
-        @available_shipping_companyes = ShippingCompany.active
+        @product = BudgetGenerate.find(params[:id])
+        @available_shipping_companies = ShippingCompany.active
     end
 
     def new
@@ -23,9 +23,5 @@ class Admin::BudgetGeneratesController < ApplicationController
     private
     def budget_params
         params.require(:budget_generate).permit(:weight, :height, :width, :depth, :distance)
-    end
-
-    def set_budget
-        @product = BudgetGenerate.find(params[:id])
     end
 end

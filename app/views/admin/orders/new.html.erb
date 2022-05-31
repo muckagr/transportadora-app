@@ -18,9 +18,9 @@
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <h2>Preços</h2>
 
-<% if !(@available_shipping_companyes).empty? %>
+<% if !(@available_shipping_companies).empty? %>
     <%= form_with model: [:admin, @product, @order] do |o| %>
-        <% @available_shipping_companyes.each do |asp| %>
+        <% @available_shipping_companies.each do |asp| %>
             <div>
                 <%= o.radio_button :shipping_company, asp.id, id: "#{asp.id}", :checked => true %>
                 <%= label_tag(:shipping_company, "Transportadora: #{asp.brand_name} | Preço: #{number_to_currency(Order.price_calculator(@product, asp), precision: 2)} | Prazo de Entrega: #{Order.deadline_calculator(@product, asp)} dias úteis") %>

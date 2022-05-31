@@ -12,7 +12,7 @@ describe BudgetGenerate do
   it { should validate_numericality_of(:depth).is_greater_than(0)}
   it { should validate_numericality_of(:height).is_greater_than(0)}
 
-  it 'must have active shipping companyes to generate a budget' do
+  it 'must have active shipping companies to generate a budget' do
     budget = BudgetGenerate.new(height: 55, depth: 10, width: 15, weight: 2000, distance: 200)
 
     result = budget.valid?
@@ -20,7 +20,7 @@ describe BudgetGenerate do
     expect(result).to be false
   end
 
-  it 'generates a budget if there is active shipping companyes' do
+  it 'generates a budget if there is active shipping companies' do
     ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
             corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101', minimal_price: 30, status: :active)
     budget = BudgetGenerate.new(height: 55, depth: 10, width: 15, weight: 2000, distance: 200)

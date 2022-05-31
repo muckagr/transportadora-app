@@ -38,7 +38,7 @@ describe 'Admin clicks on create a service order from a product' do
         expect(page).to have_content('Distância: 100km')
     end
 
-    it 'and sees shipping prices for shipping companyes that are active' do
+    it 'and sees shipping prices for shipping companies that are active' do
         admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: 'password')
         product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
                 distance: 100, weight: 2000, height: 10, width: 20, depth: 5)

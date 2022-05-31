@@ -1,8 +1,8 @@
 
 <h1>Orçamento</h1>
-<% if !(@available_shipping_companyes).empty? %>
+<% if !(@available_shipping_companies).empty? %>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <% @available_shipping_companyes.each do |asp| %>
+    <% @available_shipping_companies.each do |asp| %>
         <div> 
             <p>Transportadora: <%= asp.brand_name %></p>
             <p>Preço: <%= number_to_currency(Order.price_calculator(@product, asp), precision: 2) %></p>
