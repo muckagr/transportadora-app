@@ -1,0 +1,15 @@
+
+<h1>Orçamento</h1>
+<% if !(@available_shipping_companyes).empty? %>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <% @available_shipping_companyes.each do |asp| %>
+        <div> 
+            <p>Transportadora: <%= asp.brand_name %></p>
+            <p>Preço: <%= number_to_currency(Order.price_calculator(@product, asp), precision: 2) %></p>
+            <p>Prazo de Entrega: <%= Order.deadline_calculator(@product, asp) %> dias úteis</p>
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <% end %>
+<% else %>
+    <p>Não há Transportadoras disponíveis.</p>
+<% end %>

@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      budget_generate: "Produto"
+    attributes:
+      budget_generate:
+        distance: "Distância"
+        height: "Altura"
+        width: "Largura"
+        depth: "Profundidade"
+        weight: "Peso"

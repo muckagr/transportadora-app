@@ -35,4 +35,14 @@ describe 'Admin visit details page of a shipping company' do
 
         expect(current_path).to eq admin_shipping_companies_path
     end
+
+    it 'and needs to be logged in' do
+        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+        corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
+
+        visit(admin_shipping_company_path(shipping_company))
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

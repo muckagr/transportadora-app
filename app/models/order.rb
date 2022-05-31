@@ -10,6 +10,7 @@ class Order < ApplicationRecord
     
     private
     def self.price_calculator(product, shipping_company)
+        # debugger
         dimension_basead_price = (product.width * product.height * product.depth)/1000000 * shipping_company.price_dimensions
         distance_based_price = product.distance * shipping_company.price_km
         weight_based_price = product.weight * shipping_company.price_weight

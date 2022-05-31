@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     def search
         @order = Order.find_by(code: params[:order_code])
         if @order.present? && @order.aceita?
+            @vehicle = Vehicle.find(@order.vehicle_id)
             @shipping_statuses = @order.shipping_statuses.order('update_date DESC')
         else
         flash.now[:notice] = 'Produto não encontrado!'

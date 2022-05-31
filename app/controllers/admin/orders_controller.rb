@@ -26,7 +26,14 @@ class Admin::OrdersController < ApplicationController
         flash.now[:notice] = 'Falha ao cadastrar!'
         render 'new'
     end
-
+    
+    def budget
+        debugger
+        @product = Product.new(params)
+        @available_shipping_companyes = ShippingCompany.active
+    end
+    
+    private 
     def order_params
         params.require(:order).permit(:shipping_company, :product_id)
     end

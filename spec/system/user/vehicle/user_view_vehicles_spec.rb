@@ -33,4 +33,16 @@ describe 'User visits shippipng company vehicles page' do
         
         expect(page).to have_content('Não há veículos cadastrados')
     end
+
+    it 'and needs to be logged in' do
+        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
+        corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
+        vehicle = Vehicle.create!(license_plate: 'FSA3175', fabrication_year: '2002', car_model: 'F-250',
+        max_weight: '400', car_brand: 'Chevrolet', shipping_company: shipping_company)
+
+        visit(user_shipping_company_vehicles_path(shipping_company))
+
+        expect(current_path).to eq new_user_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

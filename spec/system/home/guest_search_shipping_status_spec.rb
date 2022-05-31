@@ -20,8 +20,8 @@ describe 'Guest searchs for a shipping status' do
         order = Order.create!(shipping_company: shipping_company, 
                 shipping_price: Order.price_calculator(product, shipping_company),
                 delivery_time: Order.deadline_calculator(product, shipping_company), status: :aceita)
-        product.order_id, product.shipping_company = order, shipping_company
-        order.vehicle_id = vehicle
+        product.update(order_id: order, shipping_company: shipping_company)
+        order.update(vehicle_id: vehicle.id)
         shipping_status_1 = ShippingStatus.create!(location: 'São Paulo - Maringá', 
                 status_description: 'Entrada em CTD Maringá', order_id: order.id)
         shipping_status_2 = ShippingStatus.create!(location: 'São Paulo - Maringá', 
@@ -49,8 +49,8 @@ describe 'Guest searchs for a shipping status' do
         order = Order.create!(shipping_company: shipping_company, 
                 shipping_price: Order.price_calculator(product, shipping_company),
                 delivery_time: Order.deadline_calculator(product, shipping_company), status: :aceita)
-        product.order_id, product.shipping_company = order, shipping_company
-        order.vehicle_id = vehicle
+        product.update(order_id: order, shipping_company: shipping_company)
+        order.update(vehicle_id: vehicle.id)
         shipping_status_1 = ShippingStatus.create!(location: 'São Paulo - Maringá', 
                 status_description: 'Entrada em CTD Maringá', order_id: order.id)
         shipping_status_2 = ShippingStatus.create!(location: 'São Paulo - Maringá', 

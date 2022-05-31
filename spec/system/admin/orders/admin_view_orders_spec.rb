@@ -27,4 +27,11 @@ describe 'Admin visits order of service page' do
 
         expect(page).to have_content('Não existem Ordens de Serviço')
     end
+
+    it 'and needs to be logged in' do
+        visit(admin_orders_path)
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

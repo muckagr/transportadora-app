@@ -73,4 +73,11 @@ describe 'Admin visits shipping companies register screen' do
         expect(page).to have_content('CNPJ já está em uso')
         expect(page).to have_content('Domínio de E-mail já está em uso')
     end
+
+    it 'and needs to be logged in' do
+        visit(new_admin_shipping_company_path)
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

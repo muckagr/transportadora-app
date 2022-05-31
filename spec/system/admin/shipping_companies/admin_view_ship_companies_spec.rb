@@ -35,4 +35,12 @@ describe 'Admin acess shipping companies page' do
         expect(page).to have_content('Razão Social: 99 LTDA')
         expect(page).to have_content('Status: waiting')
     end
+
+    it 'and needs to be logged in' do
+        visit(admin_shipping_companies_path)
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
+
 end

@@ -29,4 +29,11 @@ describe 'Admin visits product page' do
         expect(page).to have_content('Nome do Cliente: Wesley')
         expect(page).to have_content('Endereço de Entrega: Rua dos Demonios, 666')
     end
+    
+    it 'and needs to be logged in' do
+        visit(admin_products_path)
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

@@ -1,6 +1,5 @@
 class User::ShippingCompaniesController < ApplicationController
     before_action :set_shipping_company, only: [:show, :edit, :update]
-    before_action :user_verify, only: [:edit, :update, :show]
     before_action :authenticate_user!
     
     def index
@@ -32,11 +31,5 @@ class User::ShippingCompaniesController < ApplicationController
 
     def set_shipping_company
         @shipping_company = ShippingCompany.find(params[:id])
-    end
-
-    def user_verify
-        if (current_user.shipping_company.id).to_s != params[:id]
-            return redirect_to root_path
-        end
     end
 end

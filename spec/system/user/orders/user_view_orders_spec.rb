@@ -50,4 +50,23 @@ describe 'User visits his shipping company orders page' do
 
         expect(page).to have_content('Não existem Ordens de Serviço em espera')
     end
+
+    it 'and needs to be logged in' do
+        shipping_company = ShippingCompany.create!(email_domain: 'phoenix.com.br', cnpj: '13140158000128',
+                corporate_name: 'phoenix transp', brand_name: 'PHOENIX Transportadora', full_adress: 'Brasilia - SQS, 401',
+                price_km: 0.15, price_weight: 0.005, price_dimensions: 90, deadline_km: 1, minimal_price: 40, status: :active)
+        vehicle = Vehicle.create!(license_plate: 'MXK0237', fabrication_year: '2000', car_model: 'UNO', 
+                car_brand: 'FIAT', max_weight: 100, shipping_company: shipping_company)
+        product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+                distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
+        order = Order.create!(shipping_company: shipping_company, 
+                shipping_price: Order.price_calculator(product, shipping_company),
+                delivery_time: Order.deadline_calculator(product, shipping_company))
+        product.update(order_id: order.id)
+
+        visit(user_shipping_company_orders_path(shipping_company))
+
+        expect(current_path).to eq new_user_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

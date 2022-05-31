@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :budget_generates, only: %i[new create show]
     resources :orders, only: %i[index]
     resources :shipping_companies
     resources :products, only: %i[new create index show] do

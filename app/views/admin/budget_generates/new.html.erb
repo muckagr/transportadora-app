@@ -1,0 +1,42 @@
+<% if @budget.errors.any? %>
+    <ul>
+        <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h1>Realizar Orçamento</h1>
+
+<%= form_with model: [:admin, @budget] do |b| %>
+    <div> 
+        <%= b.label :distance, "Distância (Km)" %>
+        <%= b.text_field :distance %>
+    </div>
+
+    <div> 
+        <%= b.label :height, "Altura do Produto (cm)" %>
+        <%= b.text_field :height %>
+    </div>
+
+    <div> 
+        <%= b.label :width, "Largura do Produto (cm)" %>
+        <%= b.text_field :width %>
+    </div>
+
+    <div> 
+        <%= b.label :depth, "Profundidade do Produto (cm)" %>
+        <%= b.text_field :depth %>
+    </div>
+
+    <div> 
+        <%= b.label :weight, "Peso do Produto (g)" %>
+        <%= b.text_field :weight %>
+    </div>
+
+    <div>
+        <%= b.submit 'Consultar Preço' %>
+    </div>
+<% end %>
+
+

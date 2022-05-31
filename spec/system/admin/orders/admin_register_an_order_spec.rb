@@ -79,4 +79,14 @@ describe 'Admin clicks on create a service order from a product' do
 
         expect(page).to have_content('Ordem de Serviço gerada com SUCESSO!')
     end
+
+    it 'and needs to be logged in' do
+        product = Product.create!(customer_name: 'Arthur', customer_address: 'Rua dos Anjos, 101',
+                distance: 100, weight: 2000, height: 10, width: 20, depth: 5)
+
+        visit(new_admin_product_order_path(product))
+
+        expect(current_path).to eq new_admin_session_path
+        expect(page). to have_content('Para continuar, faça login ou registre-se.')
+    end
 end

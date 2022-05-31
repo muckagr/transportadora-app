@@ -12,6 +12,7 @@
   <header>
     <nav>
       <ul>
+        <li><%= link_to 'Página Inicial', root_path %></li>
         <% if !user_signed_in? && !admin_signed_in?%>
           <li><%= link_to 'Login como Transporadora', new_user_session_path %></li>
           <li><%= link_to 'Login como Admin', new_admin_session_path%></li>
@@ -22,6 +23,7 @@
           <li><%= link_to 'Transportadoras', admin_shipping_companies_path %></li>
           <li><%= link_to 'Produtos', admin_products_path %></li>
           <li><%= link_to 'Ordens de Serviço', admin_orders_path %></li>
+          <li><%= link_to 'Realizar Orçamento', new_admin_budget_generate_path %></li>
         <% end %>
         <% if current_user %>
           <li><%= button_to 'sair', destroy_user_session_path, method: :delete %></li>
