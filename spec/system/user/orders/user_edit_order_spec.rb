@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User visits his shipping company orders page' do
-    it 'and delegated a car for a order of service' do
+    it 'and delegate a car for a order of service' do
 
         shipping_company = ShippingCompany.create!(email_domain: 'phoenix.com.br', cnpj: '13140158000128',
                 corporate_name: 'phoenix transp', brand_name: 'PHOENIX Transportadora', full_adress: 'Brasilia - SQS, 401',

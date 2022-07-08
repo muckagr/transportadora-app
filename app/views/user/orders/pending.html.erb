@@ -1,0 +1,23 @@
+<h1>Ordens de Serviço</h1>
+<% if @service_orders.empty? %>
+  <p>Não existem Ordens de Serviço aceitas<p>
+<% else %>
+  <% @service_orders.each do |so| %>
+    <div>
+      <dl>
+        <dt><strong>Código da Ordem de Serviço:</strong></dt>
+        <dd><%= so.code %></dd>
+
+        <dt><strong>Endereço de Entrega:</strong></dt>
+        <dd><%= Product.find(so.id).customer_address %></dd>
+
+        <dt><strong>Valor:</strong></dt>
+        <dd><%= number_to_currency(so.shipping_price, precision: 2) %></dd>
+
+        <dt><strong>Prazo:</strong></dt>
+        <dd><%= so.delivery_time %> dias úteis</dd>
+      </dl>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  <% end %>
+<% end %>

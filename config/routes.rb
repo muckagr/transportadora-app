@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   namespace :user do
     resources :shipping_companies, only: %i[show update edit] do
       resources :shipping_statuses, only: %i[new create]
-      resources :orders, only: %i[show update edit index]
+      resources :orders, only: %i[show update edit index] do
+        get 'pending', on: :collection
+      end
       resources :vehicles, only: %i[ new create index]
     end
   end

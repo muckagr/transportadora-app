@@ -14,23 +14,6 @@ describe 'user visits shipping companies vehicles register screen' do
         expect(current_path).to eq new_user_shipping_company_vehicle_path(user.shipping_company) 
     end
 
-    it 'and see all the required attributes to register a vehicle' do
-        shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
-        corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')
-        user = User.create(email: 'admin@loja99.com', password: 'password')
-
-        login_as(user, :scope => :user)
-        visit(root_path)
-        click_on('Veículos')
-        click_on('Cadastrar Veículo')
-
-        expect(page).to have_field('Modelo do Veículo')
-        expect(page).to have_field('Marca do Veículo')
-        expect(page).to have_field('Placa do Veículo')
-        expect(page).to have_field('Ano de Fabricação')
-        expect(page).to have_field('Peso máximo')
-    end
-
     it 'and register a vehicle sucessfully' do
         shipping_company = ShippingCompany.create!(email_domain: 'loja99.com', cnpj: '00000000000000', 
         corporate_name: '99 LTDA', brand_name: '99 CENTAVOS', full_adress: 'Rua dos Padres, 101')

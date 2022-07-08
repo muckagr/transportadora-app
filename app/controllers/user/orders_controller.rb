@@ -24,4 +24,8 @@ class User::OrdersController < ApplicationController
             return redirect_to user_shipping_company_orders_path(current_user.shipping_company), notice: 'Ordem de Serviço recusada!'
         end
     end
+
+    def pending
+        @service_orders = current_user.shipping_company.orders.where(status: :aceita)
+    end
 end
