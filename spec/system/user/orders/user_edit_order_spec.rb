@@ -19,7 +19,7 @@ describe 'User visits his shipping company orders page' do
 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens Pendentes')
         select('UNO', from: 'Veículo')
 
         expect(page).to have_select('Veículo', selected: 'UNO')
@@ -43,7 +43,7 @@ describe 'User visits his shipping company orders page' do
                 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens Pendentes')
         within("//div[@id='#{order.code}']") do
             select('UNO', from: 'Veículo')
             click_on('Aceitar Ordem de Serviço')
@@ -77,7 +77,7 @@ describe 'User visits his shipping company orders page' do
                 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens Pendentes')
         within("//div[@id='#{order_1.code}']") do
             select('UNO', from: 'Veículo')
             click_on('Recusar Ordem de Serviço')

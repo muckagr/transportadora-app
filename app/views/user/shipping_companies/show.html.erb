@@ -30,7 +30,7 @@
     <dd><%= @shipping_company.minimal_price %></dd>
 
     <dt><strong><%= ShippingCompany.human_attribute_name(:status) %>:</strong></dt>
-    <dd><%= @shipping_company.status %></dd>
+    <dd><%= ShippingCompany.human_attribute_name("status.#{@shipping_company.status}") %></dd>
 </dl>
 
 <%= link_to 'Editar', edit_user_shipping_company_path(@shipping_company) %>

@@ -199,6 +199,8 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     strscan (3.0.3)
+    tailwindcss-rails (2.0.10-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     tzinfo (2.0.4)
@@ -226,10 +228,11 @@ DEPENDENCIES
   shoulda-matchers (~> 5.0)
   sprockets-rails
   sqlite3 (~> 1.4)
+  tailwindcss-rails (~> 2.0)
   tzinfo-data
 
 RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.11
+   2.3.17

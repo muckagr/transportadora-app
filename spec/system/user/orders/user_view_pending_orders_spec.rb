@@ -23,7 +23,7 @@ describe 'User visits his shipping company orders page' do
 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens Pendentes')
 
         expect(page).to have_content("#{order_1.code}")
         expect(page).to have_content('PHOENIX Transportadora')
@@ -46,7 +46,7 @@ describe 'User visits his shipping company orders page' do
 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens Pendentes')
 
         expect(page).to have_content('Não existem Ordens de Serviço em espera')
     end

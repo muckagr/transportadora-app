@@ -22,7 +22,7 @@ describe 'User visits his shipping company page' do
         expect(page).to have_content('Preço por m3:')
         expect(page).to have_content('Dias úteis de prazo/30km:')
         expect(page).to have_content('Preço mínimo')
-        expect(page).to have_content('Status: waiting')
+        expect(page).to have_content('Status: Esperando por Aprovação')
         expect(page).not_to have_content('1000 REAIS')
     end
 

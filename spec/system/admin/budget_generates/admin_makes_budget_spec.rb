@@ -12,7 +12,7 @@ describe 'Admin visits budget page' do
 
         login_as(admin, :scope => :admin)
         visit(root_path)
-        click_on('Realizar Orçamento')
+        click_on('Orçamento')
         fill_in('Altura', with: '15')
         fill_in('Largura', with: '55')
         fill_in('Profundidade', with: '10')
@@ -40,7 +40,7 @@ describe 'Admin visits budget page' do
 
         login_as(admin, :scope => :admin)
         visit(root_path)
-        click_on('Realizar Orçamento')
+        click_on('Orçamento')
         fill_in('Altura', with: 'a')
         fill_in('Largura', with: '-1')
         fill_in('Profundidade', with: '')

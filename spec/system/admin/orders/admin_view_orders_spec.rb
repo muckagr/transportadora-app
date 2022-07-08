@@ -12,7 +12,7 @@ describe 'Admin visits order of service page' do
 
         login_as(admin, :scope => :admin)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens')
 
         expect(page).to have_content('99 CENTAVOS')
         expect(page).to have_content('Rua dos Anjos, 101')
@@ -23,7 +23,7 @@ describe 'Admin visits order of service page' do
 
         login_as(admin, :scope => :admin)
         visit(root_path)
-        click_on('Ordens de Serviço')
+        click_on('Ordens')
 
         expect(page).to have_content('Não existem Ordens de Serviço')
     end

@@ -5,42 +5,61 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application" %>
   </head>
 
-  <header>
-    <nav>
-      <ul>
-        <li><%= link_to 'Página Inicial', root_path %></li>
-        <% if !user_signed_in? && !admin_signed_in?%>
-          <li><%= link_to 'Login como Transporadora', new_user_session_path %></li>
-          <li><%= link_to 'Login como Admin', new_admin_session_path%></li>
-        <% end %>
-        <% if current_admin %>
-          <li><%= button_to 'sair', destroy_admin_session_path, method: :delete %></li>
-          <li><%= current_admin.email %></li>
-          <li><%= link_to 'Transportadoras', admin_shipping_companies_path %></li>
-          <li><%= link_to 'Produtos', admin_products_path %></li>
-          <li><%= link_to 'Ordens de Serviço', admin_orders_path %></li>
-          <li><%= link_to 'Realizar Orçamento', new_admin_budget_generate_path %></li>
-        <% end %>
-        <% if current_user %>
-          <li><%= button_to 'sair', destroy_user_session_path, method: :delete %></li>
-          <li><%= current_user.email %></li>
-          <li><%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company) %></li>
-          <li><%= link_to 'Ordens de Serviço', user_shipping_company_orders_path(current_user.shipping_company) %></li>
-          <li><%= link_to 'Ordens Aceitas', pending_user_shipping_company_orders_path(current_user.shipping_company) %></li>
-          <li><%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company) %></li>
-          <li><%= link_to 'Atualizar Entrega', new_user_shipping_company_shipping_status_path(current_user.shipping_company) %>
-        <% end %>
-      </ul>
+  <body>
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4 w-full">
+        <div class="flex justify-center w-full">
+          <div class="flex space-x-7">
+            <!-- Website Logo -->
+            <div>
+              <a href="#" class="flex items-center py-4 px-2">
+                <span class="font-semibold text-gray-500 text-lg">
+                TransportadoraApp</span>
+              </a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-1">
+              <%= link_to 'Início', root_path, class: "py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold " %>
+            </div>
+            <div class="hidden md:flex items-center space-x-3 text-center">
+
+            
+              <% if current_admin %>
+                <%= link_to 'Transportadoras', admin_shipping_companies_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
+                <%= link_to 'Produtos', admin_products_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
+                <%= link_to 'Ordens', admin_orders_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
+                <%= link_to 'Orçamento', new_admin_budget_generate_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
+                <p><%= current_admin.email %></p>
+                <div class="text-center"><%= button_to 'Sair', destroy_admin_session_path, method: :delete %></div>
+              <% end %>
+
+              <% if current_user %>
+                <%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <%= link_to 'Ordens Pendentes', user_shipping_company_orders_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <%= link_to 'Ordens Aceitas', pending_user_shipping_company_orders_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <%= link_to 'Atualizar Entrega', new_user_shipping_company_shipping_status_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <p><%= current_user.email %></p>
+                <div class="text-center"><%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-red-500 hover:text-white transition duration-300" %></div>
+              <% end %>
+              <% if !user_signed_in? && !admin_signed_in?%>
+                <%= link_to 'Transporadora', new_user_session_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <%= link_to 'Administrador', new_admin_session_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>  
-  </header>
-  <body>
-  
+    <main class="container mx-auto mt-28 px-5 flex">
     <%= yield %>
+    </main>
   </body>
 </html>

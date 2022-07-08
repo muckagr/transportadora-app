@@ -18,3 +18,8 @@ pt-BR:
         minimal_price: "Preço mínimo"
         status: "Status"
         accepted: "Aguardando Ativação por Admin"
+      shipping_company/status:
+        active: "Ativa"
+        waiting: "Esperando por Aprovação"
+        accepted: "Aceita"
+        inactive: "Inativa"
