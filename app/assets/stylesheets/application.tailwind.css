@@ -4,43 +4,27 @@
 
 @layer components {
   .btn-primary {
-    @apply py-3 px-5 bg-[#0CA4A5] text-center mt-3 font-semibold;
+    @apply py-3 px-5 bg-blue-900 text-center mt-3 font-semibold text-white rounded-full;
   }
 
   .btn-secondary {
-    @apply py-3 px-5 bg-[#0CA4A5] text-center mt-3 font-semibold;
+    @apply py-3 px-5 bg-black text-center mt-3 font-semibold  text-white rounded-full;
   }
 
   h1 {
-    @apply text-xl font-semibold pb-2;
+    @apply text-xl font-bold pb-2;
   }
 
   .form {
     @apply flex flex-col items-center w-full;
   }
 
-  .destaque-1 {
-    @apply text-[#F2F4FF] font-bold;
-  }
-
-  .menu {
-    @apply bg-[#131E5A];
-  }
-
-  .menu li {
-    @apply w-[12%] text-center;
-  }
-
-  .menu li a:hover {
-    @apply font-bold;
-  }
-
-  .field_with_errors {
-    @apply;
-  }
-
   .field {
     @apply max-w-[250px];
+  }
+
+  .menu-item {
+    @apply px-3 py-3 hover:bg-blue-900 active:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-800 rounded-full;
   }
 }
 

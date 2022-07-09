@@ -11,7 +11,8 @@ describe 'guest visits admin sign up' do
         fill_in('Confirme sua senha', with: 'password')
         click_on('Registrar')
 
-        expect(page).to have_content('Erro ao cadastrar Administrador!')
+        expect(page).to have_content('E-mail não pode ficar em branco')
+        expect(page).to have_content('Senha não pode ficar em branco')
         expect(page).not_to have_content('Você criou sua conta com SUCESSO!')
     end
     it 'and registers sucessfully' do

@@ -11,53 +11,48 @@
   </head>
 
   <body>
-    <nav class="bg-white shadow-lg">
-      <div class="max-w-6xl mx-auto px-4 w-full">
-        <div class="flex justify-center w-full">
-          <div class="flex space-x-7">
-            <!-- Website Logo -->
-            <div>
-              <a href="#" class="flex items-center py-4 px-2">
-                <span class="font-semibold text-gray-500 text-lg">
-                TransportadoraApp</span>
-              </a>
-            </div>
-
-            <div class="hidden md:flex items-center space-x-1">
-              <%= link_to 'Início', root_path, class: "py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold " %>
-            </div>
-            <div class="hidden md:flex items-center space-x-3 text-center">
-
-            
+    <header class="text-white bg-black" >
+      <div class="flex m-auto w-[1200px] justify-between items-center text-xs">
+        <div class="w-[250px] text-center">
+          <h1 class="cursor-pointer px-3 py-3">TransportadoraApp</h1>
+        </div>
+        
+        <div class="mr-3">
+          <nav>
+            <ul class="flex justify-between space-x-4">
               <% if current_admin %>
-                <%= link_to 'Transportadoras', admin_shipping_companies_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
-                <%= link_to 'Produtos', admin_products_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
-                <%= link_to 'Ordens', admin_orders_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
-                <%= link_to 'Orçamento', new_admin_budget_generate_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"  %>
-                <p><%= current_admin.email %></p>
-                <div class="text-center"><%= button_to 'Sair', destroy_admin_session_path, method: :delete %></div>
+                <li class="menu-item"><%= link_to 'Transportadoras', admin_shipping_companies_path, class: "" %></li>
+                <li class="menu-item"><%= link_to 'Produtos', admin_products_path, class: "" %></li>
+                <li class="menu-item"><%= link_to 'Ordens', admin_orders_path, class: "" %></li>
+                <li class="menu-item"><%= link_to 'Orçamento', new_admin_budget_generate_path, class: "" %></li>
+                <span class="border-l-2 border-white h-[15px] m-auto"></span>
+                <li class="px-3 py-3"><%= current_admin.email %></li>
+                <li class="px-3 py-3"><%= button_to 'Sair', destroy_admin_session_path, method: :delete %></li>
               <% end %>
 
               <% if current_user %>
-                <%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <%= link_to 'Ordens Pendentes', user_shipping_company_orders_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <%= link_to 'Ordens Aceitas', pending_user_shipping_company_orders_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <%= link_to 'Atualizar Entrega', new_user_shipping_company_shipping_status_path(current_user.shipping_company), class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <p><%= current_user.email %></p>
-                <div class="text-center"><%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-red-500 hover:text-white transition duration-300" %></div>
+                <li class="menu-item"><%= link_to 'Transportadora', user_shipping_company_path(current_user.shipping_company), class: "" %></li>
+                <li class="menu-item"><%= link_to 'Ordens Pendentes', user_shipping_company_orders_path(current_user.shipping_company), class: "" %></li>
+                <li class="menu-item"><%= link_to 'Ordens Aceitas', pending_user_shipping_company_orders_path(current_user.shipping_company), class: "" %></li>
+                <li class="menu-item"><%= link_to 'Veículos', user_shipping_company_vehicles_path(current_user.shipping_company), class: "" %></li>
+                <li class="menu-item"><%= link_to 'Entregas', new_user_shipping_company_shipping_status_path(current_user.shipping_company), class: "" %></li>
+                <span class="border-l-2 border-white h-[15px] m-auto"></span>
+                <li class="px-3 py-3"><%= current_user.email %></li>
+                <li class="px-3 py-3"><%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "" %></li>
               <% end %>
+              
               <% if !user_signed_in? && !admin_signed_in?%>
-                <%= link_to 'Transporadora', new_user_session_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
-                <%= link_to 'Administrador', new_admin_session_path, class: "py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" %>
+                <li class="menu-item"><%= link_to 'Transportadora', new_user_session_path, class: "" %></li>
+                <li class="menu-item"><%= link_to 'Administrador', new_admin_session_path, class: "" %></li>
               <% end %>
-            </div>
-          </div>
+            </ul>
+          </nav>
         </div>
       </div>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>  
+    </header>
+    </div>
+    <p class="notice text-green-500"><%= notice %></p>
+    <p class="alert text-red-600"><%= alert %></p>  
     <main class="container mx-auto mt-28 px-5 flex">
     <%= yield %>
     </main>

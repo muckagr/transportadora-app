@@ -1,17 +1,22 @@
 <section class="form">
   <h1>Novo Registro</h1>
+  <% if resource.errors.any?%>
+    <p class="text-red-600"><%= resource.errors.messages_for(:shipping_company).first %></p>
+  <% end %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
     <div class="field flex-col py-3 pb-5">
+
       <div>
         <%= f.label :email %>
       </div>
+
       <div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         <% if resource.errors.any?%>
             <p class=' text-red-600'><%= resource.errors.full_messages_for(:email).first %></p>
         <% end %>
       </div>
+
     </div>
 
     <div class="field flex-col py-3 pb-5">
@@ -21,6 +26,8 @@
         <em>(<%= @minimum_password_length %> caracteres, no mínimo)</em>
         <% end %>
       </div>
+
+      <div>
         <%= f.password_field :password, autocomplete: "new-password" %>
         <% if resource.errors.any?%>
             <p class=' text-red-600'><%= resource.errors.full_messages_for(:password).first %></p>
@@ -29,15 +36,18 @@
     </div>
 
     <div class="field flex-col py-3 pb-5">
+
       <div>
         <%= f.label :password_confirmation %>
       </div>
+
       <div>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         <% if resource.errors.any?%>
             <p class=' text-red-600'><%= resource.errors.full_messages_for(:password_confirmation).first %></p>
         <% end %>
       </div>
+
     </div>
 
     <div class="actions btn-primary max-w-[250px]">
