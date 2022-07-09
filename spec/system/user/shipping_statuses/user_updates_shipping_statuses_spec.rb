@@ -14,7 +14,7 @@ describe 'User visits update delivery status' do
 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Atualizar Entrega')
+        click_on('Entrega')
         fill_in('Código da Ordem de Serviço', with: "#{order.code}")
         fill_in('Local da Atualização', with: 'CTE | Parintins - AM')
         fill_in('Descrição', with: 'Chegada em CTE | Parintins - AM')
@@ -36,7 +36,7 @@ describe 'User visits update delivery status' do
 
         login_as(user, :scope => :user)
         visit(root_path)
-        click_on('Atualizar Entrega')
+        click_on('Entrega')
         fill_in('Código da Ordem de Serviço', with: "#{order.code} + '18s1'")
         fill_in('Local da Atualização', with: '')
         fill_in('Descrição', with: '')

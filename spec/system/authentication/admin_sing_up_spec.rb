@@ -7,12 +7,13 @@ describe 'guest visits admin sign up' do
         click_on('Administrador')
         click_on('Registrar')
         fill_in('E-mail', with: 'chaves@sbt.com.br')
-        fill_in('Senha', with: 'password')
+        fill_in('Senha', with: '')
         fill_in('Confirme sua senha', with: 'password')
         click_on('Registrar')
 
-        expect(page).to have_content('E-mail não pode ficar em branco')
+        expect(page).to have_content('Erro ao cadastrar Administrador!')
         expect(page).to have_content('Senha não pode ficar em branco')
+        expect(page).to have_content('Confirme sua senha não é igual a Senha')
         expect(page).not_to have_content('Você criou sua conta com SUCESSO!')
     end
     it 'and registers sucessfully' do
