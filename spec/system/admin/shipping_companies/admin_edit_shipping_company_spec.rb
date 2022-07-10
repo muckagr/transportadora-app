@@ -40,7 +40,7 @@ describe 'Admin visits shipping company edit page' do
         expect(page).to have_content('01020304050607')
         expect(page).to have_content('loja99.com')
         expect(page).to have_content('Rua dos Padres, 101')
-        expect(page).to have_content('waiting')
+        expect(page).to have_content('Pendente')
     end
 
     it 'and keeps all mandatory fields' do
