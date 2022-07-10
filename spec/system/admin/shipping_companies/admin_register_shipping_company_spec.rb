@@ -46,8 +46,8 @@ describe 'Admin visits shipping companies register screen' do
         expect(current_path).to eq admin_shipping_companies_path
         expect(page).to have_content('Transportadora cadastrada com SUCESSO!')
         expect(page).to have_content('SEDEX')
-        expect(page).to have_content('Razão Social: SEDEX LTDA')
-        expect(page).to have_content('Status:')
+        expect(page).to have_content("Razão Social\nSEDEX LTDA")
+        expect(page).to have_content("Status\nPendente")
     end
 
     it 'and unsuccessfully registers a shipping company with non-valid data' do
