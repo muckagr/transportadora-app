@@ -20,6 +20,6 @@ pt-BR:
         accepted: "Aguardando Ativação por Admin"
       shipping_company/status:
         active: "Ativa"
-        waiting: "Esperando por Aprovação"
+        waiting: "Pendente"
         accepted: "Aceita"
         inactive: "Inativa"

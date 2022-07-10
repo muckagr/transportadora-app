@@ -1,19 +1,28 @@
-<h1>Transportadoras</h1>
-    <%= link_to 'Cadastrar Transportadora', new_admin_shipping_company_path %>
+<section class="list mx-auto mt-10">
+  <div class="grid place-items-center">
+    <h1>Transportadoras</h1>
+    <%= link_to 'Cadastrar Transportadora', new_admin_shipping_company_path, class: "btn-primary" %>
+  </div>
 
-    <% if @shipping_companies.any? %>
+    <div  id="main" class="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 m-5 mt-10 place-items-center max-w-180px gap-5">
+      <% if @shipping_companies.any? %>
         <% @shipping_companies.each do |s| %>  
-            <div>
-                <h2><%=link_to s.brand_name, admin_shipping_company_path(s.id) %></h2>
-                <dl>
-                    <dt><strong>Razão Social: </strong></dt>
-                    <dd><%= s.corporate_name %></dd>
-                    <dt><strong>Status: </strong></dt>
-                    <dd><%= s.status %></dd>
-                </dl>
+          <div class="flex flex-col w-[180px] max-w-[180px] shadow-lg rounded-md overflow-hidden h-full">
+            <div class="flex bg-black h-[50px] w-full">
+              <h2 class="font-bold text-white w-full m-auto text-center active:bg-blue-800"><%=link_to s.brand_name, admin_shipping_company_path(s.id) %></h2>
             </div>
-        <% end %>
-    
+            <div class="flex flex-col items-center text-center p-5">
+              <p><strong>Razão Social</strong></p>
+              <p><%= s.corporate_name %></p>
+              <p class="mt-4"><strong>Status</strong></p>
+              <p class=<%= s.status == 'active' ? 'btn-active': s.status == 'accepted' || s.status == 'waiting' ? 'btn-accepted' : 'btn-inactive'  %>><%= ShippingCompany.human_attribute_name("status.#{s.status}") %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+
     <% else %>
-        <p>Não há Transportadoras cadastradas</p>
+    <p>Não há Transportadoras cadastradas</p>
     <% end %>
+</section>

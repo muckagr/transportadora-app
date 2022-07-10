@@ -11,6 +11,18 @@
     @apply py-3 px-5 bg-black text-center mt-3 font-semibold  text-white rounded-full;
   }
 
+  .btn-active {
+    @apply py-1 px-3 bg-green-600 text-center font-semibold text-white rounded-full;
+  }
+
+  .btn-accepted {
+    @apply py-1 px-3 bg-yellow-600 text-center font-semibold text-white rounded-full;
+  }
+
+  .btn-inactive {
+    @apply py-1 px-3 bg-gray-600 text-center font-semibold text-white rounded-full;
+  }
+
   h1 {
     @apply text-xl font-bold pb-2;
   }
