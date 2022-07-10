@@ -1,9 +1,13 @@
-<section class="form">
-  <h1>Novo Registro</h1>
+<section class="w-full mt-[100px]">
   <% if resource.errors.any?%>
-    <p class="text-red-600"><%= resource.errors.messages_for(:shipping_company).first %></p>
+    <% if current_page?(new_user_registration_path) %>
+      <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
+    <% else %>
+      <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
+    <% end %>
   <% end %>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" }) do |f| %>
+    <h1>Novo Registro</h1>
     <div class="field flex-col py-3 pb-5">
 
       <div>
@@ -50,11 +54,11 @@
 
     </div>
 
-    <div class="actions btn-primary max-w-[250px]">
+    <div class="actions btn-primary w-[250px]">
       <%= f.submit "Registrar" %>
     </div>
 
-    <div class="btn-secondary max-w-[250px]">
+    <div class="btn-secondary w-[250px]">
       <%= render "devise/shared/links", class: "btn-secondary cursor-pointer" %>
     </div>
     <% end %>

@@ -20,7 +20,7 @@
   }
 
   .btn-inactive {
-    @apply py-1 px-3 bg-gray-600 text-center font-semibold text-white rounded-full;
+    @apply py-1 px-3 bg-gray-400 text-center font-semibold text-white rounded-full;
   }
 
   h1 {

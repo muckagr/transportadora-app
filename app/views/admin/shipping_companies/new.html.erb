@@ -1,38 +1,48 @@
-<% if @shipping_company.errors.any? %>
-    <ul>
-        <% @shipping_company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
-
-<%= form_with model: [:admin, @shipping_company] do |s| %>
-    <div> 
-        <%= s.label :corporate_name %>
-        <%= s.text_field :corporate_name %>
+<section class="w-full mt-10">
+  <%= form_with model: [:admin, @shipping_company], html: { class: "flex flex-col w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md"} do |s| %>
+    <h1>Cadastrar Transportadora</h1>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+      <p><%= s.label :corporate_name %></p>
+      <p><%= s.text_field :corporate_name %></p>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:corporate_name).first %></p>
+      <% end %>
     </div>
 
-    <div> 
-        <%= s.label :brand_name %>
-        <%= s.text_field :brand_name %>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+      <p><%= s.label :brand_name %><p>
+      <p><%= s.text_field :brand_name %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:brand_name).first %></p>
+      <% end %>
     </div>
 
-    <div> 
-        <%= s.label :cnpj %>
-        <%= s.text_field :cnpj %>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+      <p><%= s.label :cnpj %></p>
+      <p><%= s.text_field :cnpj %></p>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:cnpj).first %></p>
+      <% end %>
     </div>
 
-    <div> 
-        <%= s.label :email_domain %>
-        <%= s.text_field :email_domain %>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+      <p><%= s.label :email_domain %></p>
+      <p><%= s.text_field :email_domain %></p>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:email_domain).first %></p>
+      <% end %>
     </div>
 
-    <div> 
-        <%= s.label :full_adress %>
-        <%= s.text_field :full_adress %>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+      <p><%= s.label :full_adress %></p>
+      <p><%= s.text_field :full_adress %></p>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:full_adress).first %></p>
+      <% end %>
     </div>
 
-    <div>
-        <%= s.submit 'Cadastrar' %>
+    <div class="btn-primary w-[250px] bg-black">
+      <p><%= s.submit 'Cadastrar' %></p>
     </div>
-<% end %>
+  <% end %>
+</section>

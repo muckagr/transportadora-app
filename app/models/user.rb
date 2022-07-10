@@ -9,12 +9,12 @@ class User < ApplicationRecord
   private
   def ensure_has_a_shipping_company
     return unless email.present?
-    user_domain = self.email.split('@').last
-    if (ShippingCompany.where(email_domain: user_domain)).any?
-      shipping_company = ShippingCompany.find_by(email_domain: user_domain)
+    input_domain = self.email.split('@').last
+    unless ShippingCompany.find_by(email_domain: input_domain).nil?
+      shipping_company = ShippingCompany.find_by(email_domain: input_domain)
       self.shipping_company = shipping_company
     else
-      errors.add(:shipping_company, 'Domínio inexistente!')
+      errors.add(:base, 'Erro ao cadastrar, domínio inválido!')
     end
   end
 end
