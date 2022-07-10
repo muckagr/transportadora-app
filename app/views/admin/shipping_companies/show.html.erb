@@ -1,60 +1,67 @@
 <section class="w-full mt-[100px]">
-  <div class="flex flex-col m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md w-[350px]">
-    <h1><%= @shipping_company.brand_name %></h1>
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:brand_name) %></strong></p>
-      <p><%= @shipping_company.brand_name %></p>
-    </div>
+  <div class="flex bg-black m-auto items-center h-[50px] shadow-lg rounded-md">
+    <h1 class="text-white text-center w-full"><%= @shipping_company.brand_name %></h1>
+  </div>
+  <div class="flex justify-center h-full">
+    <div class="flex flex-col text-sm shadow-lg rounded-md m-auto w-full h-[500px] pt-4">
+      <div class="flex-col w-full ml-5">
+        <p class="font-bold text-xl text-center">Informações Gerais</p>
+        <p class="mt-4 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:brand_name) %></strong></p>
+        <p><%= @shipping_company.brand_name %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:corporate_name) %></strong></p>
-      <p><%= @shipping_company.corporate_name %></p>
-    </div>
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:corporate_name) %></strong></p>
+        <p><%= @shipping_company.corporate_name %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:cnpj) %></strong></p>
-      <p><%= @shipping_company.cnpj %></p>
-    </div>
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:cnpj) %></strong></p>
+        <p><%= @shipping_company.cnpj %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:email_domain) %></strong></p>
-      <p><%= @shipping_company.email_domain %></p>
-    </div>
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:email_domain) %></strong></p>
+        <p><%= @shipping_company.email_domain %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:full_adress) %></strong></p>
-      <p><%= @shipping_company.full_adress %></p>
-    </div>
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:full_adress) %></strong></p>
+        <p><%= @shipping_company.full_adress %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:price_km) %></strong></p>
-      <p><%= @shipping_company.price_km %></p>
-    </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:price_weight) %></strong></p>
-      <p><%= @shipping_company.price_weight %></p>
-    </div>
+      <div class="flex-col w-full ml-5 font-bold">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:status) %></strong></p>
+        <p class=<%= @shipping_company.status == 'active' ? 'text-green-500': @shipping_company.status == 'accepted' || @shipping_company.status == 'waiting' ? 'text-yellow-500' : 'text-red-600'  %>><%= ShippingCompany.human_attribute_name("status.#{@shipping_company.status}")%></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:price_dimensions) %></strong></p>
-      <p><%= @shipping_company.price_dimensions %></p>
     </div>
+    <div class="flex flex-col text-sm shadow-lg rounded-md m-auto w-full h-[500px] pt-4">
+      <div class="flex-col w-full ml-5">
+        <p class="font-bold text-xl text-center">Configurações de Preço</p>
+        <p class="mt-4 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:price_km) %></strong></p>
+        <p><%= @shipping_company.price_km %></p>
+      </div>
 
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:deadline_km) %></strong></p>
-      <p><%= @shipping_company.deadline_km %></p>
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:price_weight) %></strong></p>
+        <p><%= @shipping_company.price_weight %></p>
+      </div>
+
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:price_dimensions) %></strong></p>
+        <p><%= @shipping_company.price_dimensions %></p>
+      </div>
+
+      <div class="flex-col w-full ml-5">
+        <p class="mt-2 mb-2 text-base"><strong><%= ShippingCompany.human_attribute_name(:deadline_km) %></strong></p>
+        <p><%= @shipping_company.deadline_km %></p>
+      </div>
     </div>
-
-    <div class="flex-col w-full">
-      <p class="mt-2 mb-2 text-lg"><strong><%= ShippingCompany.human_attribute_name(:status) %></strong></p>
-      <p class=<%= @shipping_company.status == 'active' ? 'text-green-500': @shipping_company.status == 'accepted' || @shipping_company.status == 'waiting' ? 'text-yellow-500' : 'text-red-600'  %>><%= ShippingCompany.human_attribute_name("status.#{@shipping_company.status}")%></p>
-    </div>
-
-    <div class="flex-col mt-10 gap-4">
-      <p class="text-center"><%= link_to 'Editar', edit_admin_shipping_company_path(@shipping_company), class: "btn-primary" %></p>
-      <p class="text-center mt-10"><%= link_to 'Voltar', admin_shipping_companies_path, class: "btn-secondary" %></p>
-    </div>
-
+  </div>
+  <div class="flex mt-10 gap-4 justify-center">
+    <p class="text-center"><%= link_to 'Editar', edit_admin_shipping_company_path(@shipping_company), class: "btn-primary" %></p>
+    <p class="text-center"><%= link_to 'Voltar', admin_shipping_companies_path, class: "btn-secondary" %></p>
   </div>
 </section>
