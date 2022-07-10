@@ -1,13 +1,13 @@
 <section class="w-full mt-[100px]">
-  <% if resource.errors.any?%>
-    <% if current_page?(new_user_registration_path) %>
-      <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
-    <% else %>
-      <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
-    <% end %>
-  <% end %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" }) do |f| %>
     <h1>Novo Registro</h1>
+    <% if resource.errors.any?%>
+      <% if current_page?(new_user_registration_path) %>
+        <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
+      <% else %>
+        <p class="text-red-600"><%= resource.errors.messages_for(:base).first %></p>
+      <% end %>
+    <% end %>
     <div class="field flex-col py-3 pb-5">
 
       <div>

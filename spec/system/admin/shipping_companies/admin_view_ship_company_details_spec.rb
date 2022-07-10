@@ -11,15 +11,15 @@ describe 'Admin visit details page of a shipping company' do
         click_on('Transportadoras')
         click_on('99 CENTAVOS')
 
-        expect(page).to have_content('Nome Fantasia: 99 CENTAVOS')
-        expect(page).to have_content('Domínio de E-mail: loja99.com')
-        expect(page).to have_content('Razão Social: 99 LTDA')
-        expect(page).to have_content('Endereço: Rua dos Padres, 101')
-        expect(page).to have_content('Preço por km:')
-        expect(page).to have_content('Preço por grama:')
-        expect(page).to have_content('Preço por m3:')
-        expect(page).to have_content('Dias úteis de prazo/30km:')
-        expect(page).to have_content('Status')
+        expect(page).to have_content("Nome Fantasia\n99 CENTAVOS")
+        expect(page).to have_content("Domínio de E-mail\nloja99.com")
+        expect(page).to have_content("Razão Social\n99 LTDA")
+        expect(page).to have_content("Endereço\nRua dos Padres, 101")
+        expect(page).to have_content("Preço por km\n")
+        expect(page).to have_content("Preço por grama\n")
+        expect(page).to have_content("Preço por m3\n")
+        expect(page).to have_content("Dias úteis de prazo/30km\n")
+        expect(page).to have_content("Status\n")
     end
 
     it 'and goes back to shipping companies page' do
