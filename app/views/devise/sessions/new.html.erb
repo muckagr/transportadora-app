@@ -1,34 +1,33 @@
-<section class="form">
+<section class="w-full mt-[100px]">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" }) do |f| %>
     <h1>Entrar</h1>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      
-      <div class="field flex-col py-3 pb-5">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
 
-      <div class="field flex-col py-3 pb-5">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+    <div class="field flex-col py-3 pb-5">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-white" %>
+    </div>
 
-      <!--
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-      -->
+    <div class="field flex-col py-3 pb-5">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-      <div class="actions btn-primary max-w-[250px]">
-        <%= f.submit "Entrar" %>
-      </div>
-
-      <div class="btn-secondary max-w-[250px]">
-        <%= render "devise/shared/links" %>
+    <!--
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
       </div>
     <% end %>
+    -->
 
+    <div class="actions btn-primary w-[250px]">
+      <%= f.submit "Entrar" %>
     </div>
+
+    <div class="btn-secondary w-[250px]">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+  </div>
 </section>

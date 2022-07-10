@@ -15,14 +15,14 @@ describe 'User visits his shipping company page' do
 
         expect(page).to have_content('Nome Fantasia: 99 CENTAVOS')
         expect(page).to have_content('Domínio de E-mail: loja99.com')
-        expect(page).to have_content('Razão Social: 99 LTDA')
+        expect(page).to have_content("Razão Social: 99 LTDA")
         expect(page).to have_content('Endereço: Rua dos Padres, 101')
         expect(page).to have_content('Preço por km:')
         expect(page).to have_content('Preço por grama:')
         expect(page).to have_content('Preço por m3:')
         expect(page).to have_content('Dias úteis de prazo/30km:')
         expect(page).to have_content('Preço mínimo')
-        expect(page).to have_content('Status: Esperando por Aprovação')
+        expect(page).to have_content('Status: Pendente')
         expect(page).not_to have_content('1000 REAIS')
     end
 

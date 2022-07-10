@@ -6,12 +6,11 @@ class Admin < ApplicationRecord
   before_validation :ensure_is_valid_domain
 
   private
-  #resource.errors.messages[:shipping_company]
   def ensure_is_valid_domain
     return unless email.present?
     input_domain = self.email.split('@').last
     if input_domain != 'sistemadefrete.com.br'
-      errors.add(:shipping_company, 'Erro ao cadastrar Administrador!')
+      errors.add(:base, 'Erro ao cadastrar Administrador!')
     end
   end
 end

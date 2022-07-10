@@ -32,8 +32,8 @@ describe 'Admin acess shipping companies page' do
         click_on('Transportadoras')
 
         expect(page).to have_content('99 CENTAVOS')
-        expect(page).to have_content('Razão Social: 99 LTDA')
-        expect(page).to have_content('Status: waiting')
+        expect(page).to have_content("Razão Social\n99 LTDA")
+        expect(page).to have_content("Status\nPendente")
     end
 
     it 'and needs to be logged in' do
