@@ -1,49 +1,59 @@
-<% if @shipping_company.errors.any? %>
-    <ul>
-        <% @shipping_company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
 <section class="w-full mt-[100px]">
-    <%= form_with model: [:admin, @shipping_company], html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" } do |s| %>
-        <h1>Editar Transportadora</h1>
-        <div class="field flex-col py-3 pb-5"> 
-            <%= s.label :corporate_name %>
-            <%= s.text_field :corporate_name %>
-        </div>
+  <%= form_with model: [:admin, @shipping_company], html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" } do |s| %>
+    <h1>Editar Transportadora</h1>
+    <div class="field flex-col py-3 pb-5"> 
+      <%= s.label :corporate_name %>
+      <%= s.text_field :corporate_name %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:corporate_name).first %></p>
+      <% end %>
+    </div>
 
-        <div class="field flex-col py-3 pb-5"> 
-            <%= s.label :brand_name %>
-            <%= s.text_field :brand_name %>
-        </div>
+    <div class="field flex-col py-3 pb-5"> 
+      <%= s.label :brand_name %>
+      <%= s.text_field :brand_name %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:brand_name).first %></p>
+      <% end %>
+    </div>
 
-        <div class="field flex-col py-3 pb-5"> 
-            <%= s.label :cnpj %>
-            <%= s.text_field :cnpj %>
-        </div>
+    <div class="field flex-col py-3 pb-5"> 
+      <%= s.label :cnpj %>
+      <%= s.text_field :cnpj %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:cnpj).first %></p>
+      <% end %>
+    </div>
 
-        <div class="field flex-col py-3 pb-5"> 
-            <%= s.label :email_domain %>
-            <%= s.text_field :email_domain %>
-        </div>
+    <div class="field flex-col py-3 pb-5"> 
+      <%= s.label :email_domain %>
+      <%= s.text_field :email_domain %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:email_domain).first %></p>
+      <% end %>
+    </div>
 
-        <div class="field flex-col py-3 pb-5"> 
-            <%= s.label :full_adress %>
-            <%= s.text_field :full_adress %>
-        </div>
+    <div class="field flex-col py-3 pb-5"> 
+      <%= s.label :full_adress %>
+      <%= s.text_field :full_adress %>
+      <% if @shipping_company.errors.any?%>
+        <p class=' text-red-600'><%= @shipping_company.errors.full_messages_for(:full_adress).first %></p>
+      <% end %>
+    </div>
 
-        <div class="field flex-col py-3 pb-5 w-full text-center">
-            <p><%= s.label :status %><p>
-            <%= s.select :status, [
-                [ShippingCompany.human_attribute_name("status.waiting"), 'waiting'],
-                [ShippingCompany.human_attribute_name("status.accepted"), 'accepted'],
-                [ShippingCompany.human_attribute_name("status.active"), 'active'],
-                [ShippingCompany.human_attribute_name("status.inactive"), 'inactive']
-                ] %>
-        </div>
+    <div class="field flex-col py-3 pb-5 w-full text-center">
+      <p><%= s.label :status %><p>
+      <%= s.select :status, 
+      [
+        [ShippingCompany.human_attribute_name("status.waiting"), 'waiting'],
+        [ShippingCompany.human_attribute_name("status.accepted"), 'accepted'],
+        [ShippingCompany.human_attribute_name("status.active"), 'active'],
+        [ShippingCompany.human_attribute_name("status.inactive"), 'inactive']
+      ] %>
+    </div>
 
-        <div class="btn-primary w-[250px]">
-            <%= s.submit 'Editar' %>
-        </div>
-    <% end %>
+    <div class="btn-primary w-[250px]">
+      <%= s.submit 'Editar' %>
+    </div>
+  <% end %>
+</section>
