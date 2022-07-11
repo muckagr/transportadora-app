@@ -5,39 +5,45 @@
         <% end %>
     </ul>
 <% end %>
+<section class="w-full mt-[100px]">
+    <%= form_with model: [:admin, @shipping_company], html: { class: "flex flex-col sm:w-[60%] xl:w-[40%] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md" } do |s| %>
+        <h1>Editar Transportadora</h1>
+        <div class="field flex-col py-3 pb-5"> 
+            <%= s.label :corporate_name %>
+            <%= s.text_field :corporate_name %>
+        </div>
 
-<%= form_with model: [:admin, @shipping_company] do |s| %>
-    <div> 
-        <%= s.label :corporate_name %>
-        <%= s.text_field :corporate_name %>
-    </div>
+        <div class="field flex-col py-3 pb-5"> 
+            <%= s.label :brand_name %>
+            <%= s.text_field :brand_name %>
+        </div>
 
-    <div> 
-        <%= s.label :brand_name %>
-        <%= s.text_field :brand_name %>
-    </div>
+        <div class="field flex-col py-3 pb-5"> 
+            <%= s.label :cnpj %>
+            <%= s.text_field :cnpj %>
+        </div>
 
-    <div> 
-        <%= s.label :cnpj %>
-        <%= s.text_field :cnpj %>
-    </div>
+        <div class="field flex-col py-3 pb-5"> 
+            <%= s.label :email_domain %>
+            <%= s.text_field :email_domain %>
+        </div>
 
-    <div> 
-        <%= s.label :email_domain %>
-        <%= s.text_field :email_domain %>
-    </div>
+        <div class="field flex-col py-3 pb-5"> 
+            <%= s.label :full_adress %>
+            <%= s.text_field :full_adress %>
+        </div>
 
-    <div> 
-        <%= s.label :full_adress %>
-        <%= s.text_field :full_adress %>
-    </div>
+        <div class="field flex-col py-3 pb-5 w-full text-center">
+            <p><%= s.label :status %><p>
+            <%= s.select :status, [
+                [ShippingCompany.human_attribute_name("status.waiting"), 'waiting'],
+                [ShippingCompany.human_attribute_name("status.accepted"), 'accepted'],
+                [ShippingCompany.human_attribute_name("status.active"), 'active'],
+                [ShippingCompany.human_attribute_name("status.inactive"), 'inactive']
+                ] %>
+        </div>
 
-    <div>
-        <%= s.label :status %>
-        <%= s.select :status, ['waiting', 'accepted', 'active', 'inactive'] %>
-    </div>
-
-    <div>
-        <%= s.submit 'Editar' %>
-    </div>
-<% end %>
+        <div class="btn-primary w-[250px]">
+            <%= s.submit 'Editar' %>
+        </div>
+    <% end %>
