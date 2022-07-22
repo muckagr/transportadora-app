@@ -1,21 +1,27 @@
-<h1>Produtos</h1>
-    <%= link_to 'Cadastrar Produto', new_admin_product_path %>
-
-    <% if @products.any? %>
-        <% @products.each do |p| %>  
-            <div>
-                <h2>Pedido: <%= p.id %> - Código: <%= p.code %></h2>
-                <dl>
-                    <dt><strong>Nome do Cliente:</strong></dt>
-                    <dd><%= p.customer_name %></dd>
-                    
-                    <dt><strong>Endereço de Entrega:</strong></dt>
-                    <dd><%= p.customer_address %></dd>
-                </dl>
-                <%= link_to 'Gerar Ordem de Serviço', new_admin_product_order_path(p) %>
-            </div>
-        <% end %>
-    
-    <% else %>
-        <p>Não há produtos em espera</p>
-    <% end %>
+<section class="mx-auto mt-10">
+  <div class="grid place-items-center">
+    <h1>Produtos</h1>
+    <%= link_to 'Cadastrar Produto', new_admin_product_path, class: "btn-primary" %>
+  </div>
+  <% if @products.any? %>
+    <div class="flex flex-wrap mt-10 gap-4 justify-center">
+      <% @products.each do |p| %>  
+        <div class="p-6 pb-5 w-[300px] max-w-[300px] shadow-lg rounded-md bg-gray-100 overflow-auto">
+          <h2><strong>Pedido</strong> - <%= p.code %></h2>
+            <dl>
+              <dt><strong>Nome do Cliente:</strong></dt>
+              <dd><%= p.customer_name %></dd>
+              
+              <dt><strong>Endereço de Entrega:</strong></dt>
+              <dd class="text-clip"><%= p.customer_address %></dd>
+            </dl>
+          <div class="mt-5 text-center">
+            <%= link_to 'Gerar Ordem de Serviço', new_admin_product_order_path(p), class: "btn-secondary mb-2" %>
+          </div>
+        </div>
+      <% end %>
+  
+  <% else %>
+      <p>Não há produtos em espera</p>
+  <% end %>
+</section>
