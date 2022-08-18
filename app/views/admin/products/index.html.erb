@@ -4,24 +4,27 @@
     <%= link_to 'Cadastrar Produto', new_admin_product_path, class: "btn-primary" %>
   </div>
   <% if @products.any? %>
-    <div class="flex flex-wrap mt-10 gap-4 justify-center">
+    <div class="flex flex-wrap mt-10 justify-center gap-4">
       <% @products.each do |p| %>  
-        <div class="p-6 pb-5 w-[300px] max-w-[300px] shadow-lg rounded-md bg-gray-100 overflow-auto">
-          <h2><strong>Pedido</strong> - <%= p.code %></h2>
-            <dl>
-              <dt><strong>Nome do Cliente:</strong></dt>
-              <dd><%= p.customer_name %></dd>
-              
-              <dt><strong>Endereço de Entrega:</strong></dt>
-              <dd class="text-clip"><%= p.customer_address %></dd>
-            </dl>
+        <div class="p-6 pb-5 shadow-lg rounded-md bg-gray-100 basis-[30%] w-[265px] min-w-[265px] max-w-[265px] h-[235px]">
+          <div>
+              <dl>
+                <dt><h2 class="text-xl"><strong>Pedido:</strong></h2></dt> 
+                <dd><%= p.code %></dd>
+                <dt><strong>Nome do Cliente:</strong></dt>
+                <dd><%= p.customer_name %></dd>
+                
+                <dt><strong>Endereço de Entrega:</strong></dt>
+                <dd class="text-clip"><%= p.customer_address %></dd>
+              </dl>
+            </div>
           <div class="mt-5 text-center">
-            <%= link_to 'Gerar Ordem de Serviço', new_admin_product_order_path(p), class: "btn-secondary mb-2" %>
+            <p><%= link_to 'Gerar Ordem de Serviço', new_admin_product_order_path(p), class: "btn-secondary mb-2 p-2 truncate" %></p>
           </div>
         </div>
       <% end %>
   
   <% else %>
-      <p>Não há produtos em espera</p>
+      <p class="text-center mt-10">Não há produtos em espera</p>
   <% end %>
 </section>

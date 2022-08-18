@@ -9,7 +9,7 @@ class HomeController < ApplicationController
             @vehicle = Vehicle.find(@order.vehicle_id)
             @shipping_statuses = @order.shipping_statuses.order('update_date DESC')
         else
-        flash.now[:notice] = 'Produto não encontrado!'
+        flash.now[:alert] = 'Produto não encontrado!'
         render 'index'
         end
     end
