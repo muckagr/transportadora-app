@@ -82,11 +82,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_220524) do
 
   create_table "shipping_statuses", force: :cascade do |t|
     t.string "update_date"
+    t.integer "order_id", null: false
     t.string "location"
     t.string "status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_id"
+    t.index ["order_id"], name: "index_shipping_statuses_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -119,6 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_220524) do
   add_foreign_key "orders", "vehicles"
   add_foreign_key "products", "orders"
   add_foreign_key "products", "shipping_companies"
+  add_foreign_key "shipping_statuses", "orders"
   add_foreign_key "users", "shipping_companies"
   add_foreign_key "vehicles", "shipping_companies"
 end
