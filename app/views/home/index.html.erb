@@ -1,9 +1,9 @@
-<h1>Rastreio de Produtos</h1>
+<h1 class="text-center mt-10">Rastreie seu produto</h1>
 
-<%= form_with url: '/home/search', method: :get do |form| %>
-  <%= form.label :order_code, "Código de Rastreio" %>
+<%= form_with url: '/home/search', method: :get, html: { class: "flex flex-col w-[300px] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md"} do |form| %>
+  <%= form.label :order_code, "Código de Rastreio", class: "font-bold" %>
   <%= form.text_field :order_code %>
-  <%= form.submit "Procurar" %>
+  <%= form.submit "Procurar", class: "btn-primary" %>
 <% end %>
 
 
