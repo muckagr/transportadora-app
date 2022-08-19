@@ -17,7 +17,7 @@ class Admin::ProductsController < ApplicationController
         if @product.save
             return redirect_to admin_products_path, notice: 'Produto cadastrado com SUCESSO!'
         end
-        flash.now[:notice] = 'Falha ao cadastrar!'
+        flash.now[:alert] = 'Falha ao cadastrar!'
         render 'new'
     end
 
