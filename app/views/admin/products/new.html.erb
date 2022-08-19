@@ -1,48 +1,63 @@
-<% if @product.errors.any? %>
-    <ul>
-        <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
-
-<%= form_with model: [:admin, @product] do |p| %>
-    <div> 
+<%= form_with model: [:admin, @product], html: { class: "mt-10 flex flex-col w-[400px] items-center m-auto p-8 bg-gray-200 text-sm shadow-lg rounded-md"} do |p| %>
+    <h1>Cadastrar Produto</h1>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :customer_name %>
         <%= p.text_field :customer_name %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:customer_name).first %></p>
+        <% end %>
     </div>
 
-    <div> 
-        <%= p.label :customer_address%>
-        <%= p.text_field :customer_address%>
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
+        <%= p.label :customer_address %>
+        <%= p.text_field :customer_address %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:customer_address).first %></p>
+        <% end %>
+        
     </div>
 
-    <div> 
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :distance, "Distância (Km)" %>
         <%= p.text_field :distance %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:distance).first %></p>
+        <% end %>
     </div>
 
-    <div> 
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :height, "Altura do Produto (cm)" %>
         <%= p.text_field :height %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:height).first %></p>
+        <% end %>
     </div>
 
-    <div> 
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :width, "Largura do Produto (cm)" %>
         <%= p.text_field :width %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:width).first %></p>
+        <% end %>
     </div>
 
-    <div> 
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :depth, "Profundidade do Produto (cm)" %>
         <%= p.text_field :depth %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:depth).first %></p>
+        <% end %>
     </div>
 
-    <div> 
+    <div class="field flex-col py-2 pb-3 font-semibold"> 
         <%= p.label :weight, "Peso do Produto (g)" %>
         <%= p.text_field :weight %>
+        <% if @product.errors.any?%>
+            <p class=' text-red-600'><%= @product.errors.full_messages_for(:weight).first %></p>
+        <% end %>
     </div>
 
-    <div>
-        <%= p.submit 'Cadastrar' %>
+    <div class="field flex-col py-2 pb-3 font-semibold">
+        <%= p.submit 'Cadastrar', class: "btn-primary" %>
     </div>
 <% end %>

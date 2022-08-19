@@ -8,3 +8,6 @@ pt-BR:
         customer_name: "Nome do Cliente"
         distance: "Distância"
         height: "Altura"
+        width: "Largura"
+        depth: "Profundidade"
+        weight: "Peso"
