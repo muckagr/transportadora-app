@@ -13,8 +13,11 @@
   <body>
     <header class="text-white bg-black" >
       <div class="flex m-auto w-[1200px] justify-between items-center text-xs">
-        <div class="w-[250px] text-center">
-          <h1 class="cursor-pointer px-3 py-3">TransportadoraApp</h1>
+        <div class="w-[300x] ml-5">
+          <%= link_to root_path, class: "flex" do %>
+            <%= image_tag('FX13_truckgrey', class: "img-responsive w-[70px] h-[50px]")%>
+            <p><h1 class="cursor-pointer px-3 py-3">TransportadoraApp</h1></p>
+          <% end %>
         </div>
         
         <div class="mr-3">
