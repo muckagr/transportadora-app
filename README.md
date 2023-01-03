@@ -21,6 +21,10 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
 
 - gem 'devise'
 
+### Frontend
+
+- tailwind
+
 ## Como executar essa aplicação?
 
 #### 1. Clonar o projeto a partir de seu terminal
