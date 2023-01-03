@@ -21,9 +21,9 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
 
 - gem 'devise'
 
-### Frontend
+### Estilização
 
-- tailwind
+- gem 'tailwindcss-rails (2.0)'
 
 ## Como executar essa aplicação?
 
