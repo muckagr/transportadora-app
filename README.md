@@ -45,7 +45,7 @@ Ordens de Serviço são criadas também pelo Admin e são compostas sempre por u
 
 #### 5. Iniciar a aplicação
 
-            rails s
+            bin/dev
 
 #### 6. Acessar pelo seu navegador
 
